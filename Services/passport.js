@@ -20,7 +20,8 @@ passport.use(
         {
             clientID: keys.spotify_client_id,
             clientSecret: keys.spotify_client_secret,
-            callbackURL: '/auth/spotify/callback'
+            callbackURL: '/auth/spotify/callback',
+            proxy : true
         },
         function(accessToken, refreshToken, expires_in, profile, done) {
             console.log(accessToken);
