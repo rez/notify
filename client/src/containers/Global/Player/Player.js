@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 import styles from './Player.module.css';
 import play from './images/play.png';
 import pause from './images/pause.png';
@@ -204,10 +203,15 @@ class Player extends Component {
                         </div>
                     </div>
                     <div className={styles.TrackVolandTime}>
-                        <div className={` white-text ${styles.TimeWrap}`}>
-                            <span className={`white-text ${styles.PlayerVolume}`}>{this.msToMins(this.props.player.progress)}</span> /
-                            <span className={`white-text ${styles.TrackTime}`}>{this.msToMins(this.props.player.duration)}</span>
-                        </div>
+                        { this.props.player.progress ?
+                            <div className={` white-text ${styles.TimeWrap}`}>
+                                <span
+                                    className={`white-text ${styles.PlayerVolume}`}>{this.msToMins(this.props.player.progress)}</span> /
+                                <span
+                                    className={`white-text ${styles.TrackTime}`}>{this.msToMins(this.props.player.duration)}</span>
+                            </div> :
+                            null
+                        }
                     </div>
 
                 </div>

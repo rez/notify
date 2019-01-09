@@ -3,10 +3,12 @@ import {connect} from 'react-redux';
 import FollowGrid from '../../components/Follow/FollowGrid.js';
 import {playItem} from "../../actions";
 import axios from "axios";
+import styles from './Dashboard.module.css'
 import Modal from '../../components/UI/Modal/Modal';
 import ArtistReleaseList from "../../components/Artist/ArtistReleaseList/ArtistReleaseList";
 import ArtistSetsMap from "../../components/Artist/ArtistSetsMap/ArtistSetsMap";
 import {PLAY} from "../../actions/types";
+import loader from './images/loader.gif';
 
 class Dashboard extends Component {
     state = {
@@ -21,6 +23,8 @@ class Dashboard extends Component {
     }
     componentDidMount() {
         this.getData();
+    }
+    componentDidUpdate(prevProps, prevState, snapshot) {
     }
 
     playTrack = async (track) => {
@@ -84,7 +88,7 @@ class Dashboard extends Component {
 
     render(){
         return (
-            <div className='dashWrapper'>
+            <div className={styles.dashWrapper}>
                 <Modal show={this.state.showReleasesModal} modalClosed={this.modalCancelHandler}>
                     {this.state.activeReleases ? <ArtistReleaseList play={this.playTrack} releases={this.state.activeReleases} artist={this.state.activeReleasesArtist}/> : null}
                 </Modal>
@@ -92,12 +96,16 @@ class Dashboard extends Component {
                     {this.state.activeSets ? <ArtistSetsMap sets={this.state.activeSets} artist={this.state.activeSetsArtist}/> : null}
                 </Modal>
 
-                <FollowGrid
-                items={this.state.items}
-                showNewReleases={this.newReleasesHandler}
-                showSetMap={this.setMapHandler}
-                >
-                </FollowGrid>
+                {!this.state.items.length ?
+                    <img className={styles.loader} src={loader}/> :
+                    <FollowGrid
+                        items={this.state.items}
+                        showNewReleases={this.newReleasesHandler}
+                        showSetMap={this.setMapHandler}
+                    >
+                    </FollowGrid>
+                }
+
             </div>
         );
     }

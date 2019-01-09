@@ -3,6 +3,7 @@
     width: 23%!important;
     margin-right: 1%;
     display: inline-block;
+    padding: .75rem!important;
 }
 p{
     position: relative;
@@ -12,4 +13,7 @@ p{
     margin-bottom: 5px;
     width: 100%;
     cursor: pointer;
+}
+.ArtistCard{
+    padding: .75rem;
 }

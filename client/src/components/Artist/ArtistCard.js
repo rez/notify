@@ -1,5 +1,4 @@
 import React from 'react';
-import Card from "../Follow/FollowGrid";
 import styles from './ArtistCard.module.css';
 
 const card = (props) => {
@@ -32,9 +31,9 @@ const card = (props) => {
                 </p>
 
             </div>
-            <div className="card-action green-text">
-                <a href="#" >This is a link</a>
-            </div>
+            {/*<div className="card-action green-text">*/}
+                {/*<a href="#" >This is a link</a>*/}
+            {/*</div>*/}
 
         </div>
     );
