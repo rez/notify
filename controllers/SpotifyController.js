@@ -210,10 +210,12 @@ class SpotifyController {
             const result = await axios({
                 method : 'post',
                 url : `https://accounts.spotify.com/api/token`,
-                params : {grant_type : "refresh_token",
-                    refresh_token : this.user.spotifyRefreshToken},
+                params : {
+                    grant_type : "refresh_token",
+                    refresh_token : this.user.spotifyRefreshToken
+                },
                 headers : {
-                    'Authorization' : ' Basic ' +
+                    'Authorization' : 'Basic ' +
                         Buffer.from(config.spotify_client_id +":"+config.spotify_client_secret).toString('base64'),
                     'Content-Type' : 'application/x-www-form-urlencoded'
                 }

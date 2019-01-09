@@ -1,13 +1,13 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import FollowGrid from '../../components/Follow/FollowGrid.js';
-import {playItem} from "../../actions";
+import {playItem} from "../../store/actions";
 import axios from "axios";
 import styles from './Dashboard.module.css'
 import Modal from '../../components/UI/Modal/Modal';
 import ArtistReleaseList from "../../components/Artist/ArtistReleaseList/ArtistReleaseList";
 import ArtistSetsMap from "../../components/Artist/ArtistSetsMap/ArtistSetsMap";
-import {PLAY} from "../../actions/types";
+import {PLAY} from "../../store/actions/types";
 import loader from './images/loader.gif';
 
 class Dashboard extends Component {

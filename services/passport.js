@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const SpotifyStrategy =  require('passport-spotify').Strategy;
 const User =  mongoose.model("users");
 const config = require("../config/config");
-const utils = require("../Utils/Utils");
+const utils = require("../utils/Utils");
 
 passport.serializeUser((user, done) => {
     done(null, user);

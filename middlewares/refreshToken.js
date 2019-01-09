@@ -1,7 +1,7 @@
-const SpotifyController = require('../Controllers/SpotifyController');
+const SpotifyController = require('../controllers/SpotifyController');
 const mongoose = require('mongoose');
 const User =  mongoose.model("users");
-const utils = require("../Utils/Utils");
+const utils = require("../utils/Utils");
 
 module.exports = async (req, res, next) => {
     const d = new Date();
@@ -9,10 +9,11 @@ module.exports = async (req, res, next) => {
 
     const isTokenExpired = req.user.tokenExpires - ms;
     console.log(isTokenExpired);
-    if(!isTokenExpired){
+    if(isTokenExpired <= 0){
         const con = new SpotifyController(req.user);
+        console.log(" GET NEW TOKEN");
         const response = await con.refreshAccessToken();
-        console.log(response);
+
 
         try{
             const existingUser = await User.findOneAndUpdate({spotifyID : req.user.spotifyID},

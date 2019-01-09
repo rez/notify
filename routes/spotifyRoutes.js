@@ -2,9 +2,9 @@ const axios = require('axios');
 const bodyParser = require('body-parser')
 const requireLogin = require('../middlewares/requireLogin');
 const refreshSpotify = require('../middlewares/refreshToken');
-const SpotifyController = require('../Controllers/SpotifyController');
+const SpotifyController = require('../controllers/SpotifyController');
 
-const SeatGeekController = require('../Controllers/SeatGeekController');
+const SeatGeekController = require('../controllers/SeatGeekController');
 
 module.exports = (app) => {
 

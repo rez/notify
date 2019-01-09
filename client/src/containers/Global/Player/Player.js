@@ -6,7 +6,8 @@ import pause from './images/pause.png';
 import forward from './images/fwd.png';
 import back from './images/bck.png';
 import axios from "axios";
-import {PLAY, RESUME, PAUSE, UNINIT, UPDATE_TIMER, PREVIOUS, NEXT} from "../../../actions/types";
+import {PLAY, RESUME, PAUSE, UNINIT, UPDATE_TIMER, PREVIOUS, NEXT} from "../../../store/actions/types";
+import * as actions from "../../../store/actions";
 
 class Player extends Component {
     state = {
@@ -59,16 +60,7 @@ class Player extends Component {
         })
 
         if(!device) return;
-
-        const res = await axios.post('/api/next', {track : this.props.player.playing.uri,
-            device : device.id});
-
-        if(res.error){
-            console.log(res.error);
-            return
-        }
-
-        this.props.onResume();
+        this.props.nextTrack(device);
     }
     previousTrack = async () => {
         const devices = this.props.player.devices;
@@ -78,15 +70,7 @@ class Player extends Component {
 
         if(!device) return;
 
-        const res = await axios.post('/api/previous', {track : this.props.player.playing.uri,
-            device : device.id});
-
-        if(res.error){
-            console.log(res.error);
-            return
-        }
-
-        this.props.onResume();
+        this.props.previousTrack(device);
     }
     resumeTrack = async () => {
         const devices = this.props.player.devices;
@@ -95,16 +79,7 @@ class Player extends Component {
         })
 
         if(!device) return;
-
-        const res = await axios.post('/api/resume', {track : this.props.player.playing.uri,
-            device : device.id, position : this.props.player.progress});
-
-        if(res.error){
-            console.log(res.error);
-            return
-        }
-
-        this.props.onResume();
+        this.props.resumeTrack(this.props.player.playing.uri,device,this.props.player.progress);
 
 
 
@@ -116,15 +91,7 @@ class Player extends Component {
         })
 
         if(!device) return;
-
-        const res = await axios.post('/api/pause', {track : this.props.player.playing.uri,
-            device : device.id});
-
-        if(res.error){
-            console.log(res.error);
-            return
-        }
-        this.props.onPause();
+        this.props.onPause(device);
     }
 
     pollSpotifyStatus = async () =>{
@@ -222,14 +189,4 @@ class Player extends Component {
 function mapStateToProps({auth, player}) {
     return { auth, player };
 }
-
-const mapDispatchToProps = dispatch => {
-    return{
-        onPlay : (track) => dispatch({type : PLAY , track : track}),
-        onResume : () => dispatch({type : RESUME }),
-        onPause : () => dispatch({type : PAUSE }),
-        onProgress : (progress, duration) => dispatch({type : UPDATE_TIMER, duration : duration, progress : progress})
-    }
-};
-
-export default connect(mapStateToProps,mapDispatchToProps)(Player);
+export default connect(mapStateToProps,actions)(Player);

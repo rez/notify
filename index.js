@@ -5,7 +5,7 @@ const cookieSession = require('cookie-session');
 const passport = require('passport');
 const config = require('./config/config');
 require("./models/User");
-require('./Services/passport');
+require('./services/passport');
 
 
 mongoose.connect(config.mongoDB);
@@ -24,8 +24,8 @@ app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
 app.use(passport.initialize());
 app.use(passport.session());
 
-require('./Routes/authRoutes')(app);
-require('./Routes/spotifyRoutes')(app);
+require('./routes/authRoutes')(app);
+require('./routes/spotifyRoutes')(app);
 
 if(process.env.NODE_ENV === 'production'){
     app.use(express.static('client/build'));

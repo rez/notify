@@ -7,5 +7,5 @@ export const RESUME = 'resume';
 export const UNINIT = 'unit';
 export const UPDATE_TIMER = 'update_timer';
 export const POSITION_MS = 'position_ms';
-export const PREVIOUS = 'position_ms';
-export const NEXT = 'position_ms';
+export const PREVIOUS = 'previous';
+export const NEXT = 'next';
