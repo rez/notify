@@ -1,0 +1,11 @@
+export const FETCH_USER = 'fetch_user';
+export const FETCH_DEVICES = 'fetch_devices';
+export const PLAY = 'play';
+export const PAUSE = 'pause';
+export const PLAYING = 'playing';
+export const RESUME = 'resume';
+export const UNINIT = 'unit';
+export const UPDATE_TIMER = 'update_timer';
+export const POSITION_MS = 'position_ms';
+export const PREVIOUS = 'position_ms';
+export const NEXT = 'position_ms';

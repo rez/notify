@@ -2,7 +2,12 @@ const mongoose = require("mongoose");
 const {Schema} = mongoose;
 
 const userSchema = new Schema({
-    spotifyID : String
+    spotifyID : String,
+    spotifyAccessToken : String,
+    spotifyRefreshToken : String,
+    spotifyName : String,
+    tokenExpires : String,
+    storeTime : String
 });
 
-mongoose.model('user',userSchema);
+mongoose.model('users',userSchema);

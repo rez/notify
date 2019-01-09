@@ -1,0 +1,60 @@
+.Player{
+    width: 100vw;
+    height: 95px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    background: rgba(0,0,0,.75);
+    display: flex;
+}
+
+.ProgressBar{
+    width: 100%;
+    height: 4px;
+    background-image: linear-gradient(141deg, black 0%, #1ED760 51%, #1DB954 75%);
+    position: absolute;
+    -webkit-transition: all 1s linear;
+    -moz-transition: all 1s linear;
+    -o-transition: all 1s linear;
+    transition: all 1s linear;
+}
+.MetaData, .Controls, .TrackVolandTime{
+    width: 33.3%;
+    padding: 10px;
+    float: left;
+    flex-grow: 1;
+
+}
+.Controls{
+    display: flex;
+    justify-content: center;
+}
+.TimeWrap{
+    float: right;
+    margin-right: 20px;
+}
+.MetaImg{
+    height: 90%;
+    width: auto;
+    display: inline-block;
+    float: left;
+}
+.MetaTitle, .MetaArtist{
+    display: block;
+    color: white;
+}
+.MetaImg img{
+    width: 75px
+}
+.ControlBCK,.ControlPLY,.ControlFWD{
+    cursor: pointer;
+}
+.MetaText{
+    margin-left: 7px;
+    float: left;
+}
+.Control{
+    display: inline-block;
+    float: left;
+    margin-right: 7px;
+}

@@ -1,0 +1,15 @@
+
+.a__s3{
+    width: 23%!important;
+    margin-right: 1%;
+    display: inline-block;
+}
+p{
+    position: relative;
+    overflow: hidden;
+}
+.badge{
+    margin-bottom: 5px;
+    width: 100%;
+    cursor: pointer;
+}
