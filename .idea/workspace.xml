@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20ce00f7-a2b8-4d42-be6f-d4b73075c5af" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config/prod.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/prod.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Artist/ArtistSetsMap/ArtistSetsMap.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Artist/ArtistSetsMap/ArtistSetsMap.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -11,7 +11,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.40798953">
+    <splitter split-orientation="horizontal" split-proportion="0.56254095">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -35,11 +35,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/client/src/components/Artist/ArtistSetsMap/ArtistSetsMap.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="485">
-                  <caret line="42" column="25" lean-forward="true" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
+                <state relative-caret-position="395">
+                  <caret line="37" column="22" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -71,7 +71,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/src/containers/Landing/Landing.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="486">
@@ -177,8 +177,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/config/prod.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
+                <state relative-caret-position="180">
+                  <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
                 </state>
               </provider>
             </entry>
@@ -298,12 +298,12 @@
         <option value="$PROJECT_DIR$/client/src/containers/Landing/Landing.module.css" />
         <option value="$PROJECT_DIR$/client/src/containers/Global/Header/Header.module.css" />
         <option value="$PROJECT_DIR$/client/src/components/Artist/ArtistCard.module.css" />
-        <option value="$PROJECT_DIR$/client/src/components/Artist/ArtistSetsMap/ArtistSetsMap.js" />
         <option value="$PROJECT_DIR$/client/src/containers/Dashboard/Dashboard.module.css" />
         <option value="$PROJECT_DIR$/client/src/components/Artist/ArtistCard.js" />
         <option value="$PROJECT_DIR$/client/src/containers/Global/Player/Player.js" />
         <option value="$PROJECT_DIR$/client/src/containers/Dashboard/Dashboard.js" />
         <option value="$PROJECT_DIR$/config/prod.js" />
+        <option value="$PROJECT_DIR$/client/src/components/Artist/ArtistSetsMap/ArtistSetsMap.js" />
       </list>
     </option>
   </component>
@@ -334,7 +334,32 @@
             <path>
               <item name="notify" type="b2602c69:ProjectViewProjectNode" />
               <item name="notify" type="462c0819:PsiDirectoryNode" />
-              <item name="config" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="notify" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notify" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="notify" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notify" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Artist" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="notify" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notify" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Artist" type="462c0819:PsiDirectoryNode" />
+              <item name="ArtistSetsMap" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="notify" type="b2602c69:ProjectViewProjectNode" />
@@ -392,12 +417,12 @@
       <workItem from="1545946357372" duration="16350000" />
       <workItem from="1546445064053" duration="33668000" />
       <workItem from="1546614714276" duration="19699000" />
-      <workItem from="1546874533820" duration="63459000" />
+      <workItem from="1546874533820" duration="63841000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="133176000" />
+    <option name="totallyTimeSpent" value="133558000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="3600" y="23" width="1920" height="1057" extended-state="6" />
@@ -726,23 +751,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Artist/ArtistSetsMap/ArtistSetsMap.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="485">
-          <caret line="42" column="25" lean-forward="true" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/containers/Landing/Landing.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="486">
-          <caret line="27" column="17" lean-forward="true" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/containers/Global/Player/Player.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
@@ -762,8 +770,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Controllers/SpotifyController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="80" column="50" lean-forward="true" selection-start-line="80" selection-start-column="50" selection-end-line="80" selection-end-column="50" />
+        <state relative-caret-position="539">
+          <caret line="212" lean-forward="true" selection-start-line="212" selection-end-line="212" />
         </state>
       </provider>
     </entry>
@@ -781,10 +789,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/containers/Landing/Landing.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="27" column="17" lean-forward="true" selection-start-line="27" selection-start-column="17" selection-end-line="27" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/prod.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="56" selection-start-line="5" selection-start-column="56" selection-end-line="5" selection-end-column="56" />
+        <state relative-caret-position="180">
+          <caret line="10" column="2" lean-forward="true" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Artist/ArtistSetsMap/ArtistSetsMap.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="37" column="22" selection-start-line="37" selection-start-column="22" selection-end-line="37" selection-end-column="22" />
         </state>
       </provider>
     </entry>

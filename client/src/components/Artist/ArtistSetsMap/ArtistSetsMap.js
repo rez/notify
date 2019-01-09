@@ -35,8 +35,8 @@ const ArtistSetsMap = compose(
         {/*</ul>*/}
 
         <GoogleMap
-        defaultZoom={3}
-        defaultCenter={{ lat: 25.0391667, lng: 121.525 }}
+        defaultZoom={5}
+        defaultCenter={{ lat: 40.7128, lng: -74.0060 }}
     >
         <MarkerClusterer
             onClick={props.onMarkerClustererClick()}
