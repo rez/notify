@@ -33,10 +33,10 @@ const ArtistSetsMap = compose(
             {/*<li className="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li>*/}
             {/*<li className="tab col s3"><a href="#test4">Test 4</a></li>*/}
         {/*</ul>*/}
-
+        {console.log("SHOW MAP LNG " + props.lon)}
         <GoogleMap
-        defaultZoom={5}
-        defaultCenter={{ lat: 40.7128, lng: -74.0060 }}
+        defaultZoom={props.lon ? 5 : 3}
+        defaultCenter={{ lat: props.lat ? props.lat : 40.7128, lng: props.lon ? props.lon : -74.0060 }}
     >
         <MarkerClusterer
             onClick={props.onMarkerClustererClick()}

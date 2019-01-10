@@ -42,34 +42,11 @@ class Player extends Component {
                 }
             });
 
-            this.updatePlayerInfo(result.data);
+            this.props.updateTrackInfo(result.data);
 
         }catch(e){
             console.log('eeeeee' + e);
         }
-    };
-
-    updatePlayerInfo = (info) => {
-
-        const id = info.item.uri;
-
-        const device = this.props.player.active_device;
-
-        console.log(" SHOW CURRENT STATE ");
-        console.log(this.props.player)
-        console.log(" SHOW ACTIVE ");
-        console.log(info);
-
-        this.props.updateTrackInfo(info);
-
-        // else if(this.props.player.state === PLAYING && !info.is_playing){
-        //     this.props.pauseTrack(true);
-        // }else if(this.props.player.state === PAUSE && info.is_playing){
-        //     this.props.resumeTrack(true)
-        // }
-
-
-
     };
 
     msToMins = (ms) => {

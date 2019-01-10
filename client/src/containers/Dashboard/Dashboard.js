@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {geolocated} from 'react-geolocated';
 import {connect} from 'react-redux';
 import FollowGrid from '../../components/Follow/FollowGrid.js';
 import {playItem} from "../../store/actions";
@@ -8,6 +9,7 @@ import Modal from '../../components/UI/Modal/Modal';
 import ArtistReleaseList from "../../components/Artist/ArtistReleaseList/ArtistReleaseList";
 import ArtistSetsMap from "../../components/Artist/ArtistSetsMap/ArtistSetsMap";
 import {playTrack} from "../..//store/actions";
+import {getLocation} from "../../store/actions";
 import loader from './images/loader.gif';
 
 class Dashboard extends Component {
@@ -19,14 +21,20 @@ class Dashboard extends Component {
         activeSets : null,
         activeReleases : null,
         showReleasesModal : false,
-        showSetsModal : false
+        showSetsModal : false,
+        init : false
     };
 
     componentDidMount() {
-        this.getData();
+        this.props.getLocation();
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
+
+        if(this.props.location.init && !this.state.init){
+            this.getData();
+            this.setState({init : true});
+        }
     };
 
     playTrack = async (track) => {
@@ -60,7 +68,12 @@ class Dashboard extends Component {
 
     getData = async () => {
         try {
-            const res = await axios.get('/api/releases');
+            const res = await axios.get('/api/releases', {
+                params : {
+                    longitude: this.props.location.longitude,
+                    latitude: this.props.location.latitude
+                }
+            });
             if(res){
 
                 const page = this.state.page;
@@ -85,7 +98,7 @@ class Dashboard extends Component {
                     {this.state.activeReleases ? <ArtistReleaseList play={this.playTrack} releases={this.state.activeReleases} artist={this.state.activeReleasesArtist}/> : null}
                 </Modal>
                 <Modal show={this.state.showSetsModal} modalClosed={this.modalCancelHandler}>
-                    {this.state.activeSets ? <ArtistSetsMap sets={this.state.activeSets} artist={this.state.activeSetsArtist}/> : null}
+                    {this.state.activeSets ? <ArtistSetsMap lat={this.props.location.latitude} lon={this.props.location.longitude} sets={this.state.activeSets} artist={this.state.activeSetsArtist}/> : null}
                 </Modal>
 
                 {!this.state.items.length ?
@@ -103,8 +116,10 @@ class Dashboard extends Component {
     }
 }
 
-function mapStateToProps({auth, player}) {
-    return { auth, player };
+function mapStateToProps({auth, player, location}) {
+    return { auth, player, location };
 }
 
-export default connect(mapStateToProps, {playTrack})(Dashboard);
+export default connect(
+    mapStateToProps,
+    {playTrack, getLocation})(Dashboard);

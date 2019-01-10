@@ -1,7 +1,9 @@
 export {
       fetchUser
 } from './auth';
-
+export {
+        getLocation
+} from './location';
 export {
         fetchDevices,
         pauseTrack,

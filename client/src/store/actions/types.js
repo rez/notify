@@ -10,3 +10,4 @@ export const POSITION_MS = 'position_ms';
 export const PREVIOUS = 'previous';
 export const UPDATE_TRACK_INFO = 'update_track_info';
 export const NEXT = 'next';
+export const GET_LOCATION = 'get_location';
