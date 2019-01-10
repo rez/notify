@@ -6,8 +6,8 @@ import pause from './images/pause.png';
 import forward from './images/fwd.png';
 import back from './images/bck.png';
 import axios from "axios";
-import {PLAY, RESUME, PAUSE, UNINIT, UPDATE_TIMER, PREVIOUS, NEXT} from "../../../store/actions/types";
-import * as actions from "../../../store/actions";
+import {UPDATE_TRACK_INFO, PAUSE, UNINIT, PREVIOUS, NEXT, PLAYING} from "../../../store/actions/types";
+import {onProgress, pauseTrack, resumeTrack, nextTrack, previousTrack, playTrack, updateTrackInfo} from "../../../store/actions";
 
 class Player extends Component {
     state = {
@@ -17,8 +17,10 @@ class Player extends Component {
 
     componentDidMount() {
     }
+
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.startSpotifyPoll();
+
     }
 
     startSpotifyPoll = () => {
@@ -26,73 +28,7 @@ class Player extends Component {
             let timer = setInterval(this.pollSpotifyStatus, 1000);
             this.setState({timer});
         }
-    }
-    onChangeTrackHandler = (action) => {
-        switch(action) {
-            case NEXT:
-                this.nextTrack();
-                break;
-            case PREVIOUS:
-                this.previousTrack();
-                break;
-
-            default :
-                return;
-        }
-    }
-    onPlayHandler = (action) => {
-        switch (action) {
-            case PLAY :
-                this.resumeTrack();
-                break;
-            case PAUSE :
-                this.pauseTrack();
-                break;
-            default :
-                return;
-        }
-    }
-
-    nextTrack = async () => {
-        const devices = this.props.player.devices;
-        const device = devices.find((device) => {
-            return device.is_active;
-        })
-
-        if(!device) return;
-        this.props.nextTrack(device);
-    }
-    previousTrack = async () => {
-        const devices = this.props.player.devices;
-        const device = devices.find((device) => {
-            return device.is_active;
-        })
-
-        if(!device) return;
-
-        this.props.previousTrack(device);
-    }
-    resumeTrack = async () => {
-        const devices = this.props.player.devices;
-        const device = devices.find((device) => {
-            return device.is_active;
-        })
-
-        if(!device) return;
-        this.props.resumeTrack(this.props.player.playing.uri,device,this.props.player.progress);
-
-
-
-    }
-    pauseTrack = async () => {
-        const devices = this.props.player.devices;
-        const device = devices.find((device) => {
-            return device.is_active;
-        })
-
-        if(!device) return;
-        this.props.onPause(device);
-    }
+    };
 
     pollSpotifyStatus = async () =>{
         try {
@@ -111,38 +47,44 @@ class Player extends Component {
         }catch(e){
             console.log('eeeeee' + e);
         }
-    }
+    };
 
     updatePlayerInfo = (info) => {
-        const id = info.item.album.uri;
 
-        if(!this.props.player.playing|| this.props.player.playing.uri !== id){
-            this.props.onPlay(info.item.album);
-        }
+        const id = info.item.uri;
 
-        if(!info.is_playing){
-            this.props.onPause();
-        }
-       // const device = info.device.id;
-        const is_playing = info.is_playing;
-        const progress = info.progress_ms;
-        const duration_ms = info.item.duration_ms;
+        const device = this.props.player.active_device;
 
-        this.props.onProgress(progress, duration_ms);
+        console.log(" SHOW CURRENT STATE ");
+        console.log(this.props.player)
+        console.log(" SHOW ACTIVE ");
+        console.log(info);
+
+        this.props.updateTrackInfo(info);
+
+        // else if(this.props.player.state === PLAYING && !info.is_playing){
+        //     this.props.pauseTrack(true);
+        // }else if(this.props.player.state === PAUSE && info.is_playing){
+        //     this.props.resumeTrack(true)
+        // }
 
 
-    }
+
+    };
+
     msToMins = (ms) => {
         const minutes = Math.floor(ms / 60000);
         const seconds = ((ms % 60000) / 1000).toFixed(0);
         return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
-    }
+    };
+
     calcProgressPercentage = () => {
         const p = this.props.player.progress ? this.props.player.progress : 100;
         const d = this.props.player.duration ? this.props.player.duration : 100;
 
         return (p / d) * 100;
-    }
+    };
+
     render(){
         return (
                 <div className={styles.Player}>
@@ -150,23 +92,23 @@ class Player extends Component {
 
                     </div>
                     <div className={styles.MetaData}>
-                        <span className={styles.MetaImg}>
-                            {this.props.player.playing ? <img src={this.props.player.playing.images[0].url} /> : null}
+                        <span className={styles.MetaImg}> {/*this is a not so great hack because initial response only returns album(not individual tracks) could do better to format initially*/}
+                            {this.props.player.track ? <img src={this.props.player.track.album.images[0].url  } /> : null}
                         </span>
                         <div className={styles.MetaText}>
-                            <span className={styles.MetaTitle}>{this.props.player.playing ?this.props.player.playing.artists[0].name  : null}</span>
-                            <span className={styles.MetaArtist}>{this.props.player.playing ?this.props.player.playing.name  : null}</span>
+                            <span className={styles.MetaTitle}>{this.props.player.track ?  this.props.player.track.album.artists[0].name : null}</span>
+                            <span className={styles.MetaArtist}>{this.props.player.track ? this.props.player.track.name  : null}</span>
                         </div>
                     </div>
                     <div className={styles.Controls}>
                         <div>
-                            <span className={styles.ControlBCK} onClick={() => this.onChangeTrackHandler(PREVIOUS)}><img src={back} /></span>
+                            <span className={styles.ControlBCK} onClick={() => this.props.previousTrack()}><img src={back} /></span>
                             <span  className={styles.ControlPLY}>
                                 {this.props.player.state === UNINIT ||  this.props.player.state == PAUSE ?
-                                    <img onClick={() => { this.onPlayHandler(PLAY)}} src={play} /> :
-                                    <img onClick={() => { this.onPlayHandler(PAUSE)}} src={pause} />
+                                    <img onClick={() => { this.props.resumeTrack()}} src={play} /> :
+                                    <img onClick={() => { this.props.pauseTrack()}} src={pause} />
                             }</span>
-                            <span className={styles.ControlFWD} onClick={() => this.onChangeTrackHandler(NEXT)}><img src={forward} /></span>
+                            <span className={styles.ControlFWD} onClick={() => this.props.nextTrack()}><img src={forward} /></span>
                         </div>
                     </div>
                     <div className={styles.TrackVolandTime}>
@@ -189,4 +131,4 @@ class Player extends Component {
 function mapStateToProps({auth, player}) {
     return { auth, player };
 }
-export default connect(mapStateToProps,actions)(Player);
+export default connect(mapStateToProps,{updateTrackInfo, onProgress, pauseTrack, resumeTrack, nextTrack, previousTrack, playTrack})(Player);

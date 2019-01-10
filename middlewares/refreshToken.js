@@ -28,6 +28,7 @@ module.exports = async (req, res, next) => {
                 });
 
             if(existingUser){
+                next();
                 console.log("EXISTTTTTTTTN")
                 return;
             }

@@ -149,12 +149,8 @@ module.exports = (app) => {
         res.send(devices);
     });
     app.post('/api/resume',  requireLogin,refreshSpotify,async (req,res) => {
-        const track =  req.body.track;
-        const device = req.body.device;
-        const position = req.body.position;
-
         const con = new SpotifyController(req.user);
-        const devices = await con.playTrack(track,device,position);
+        const devices = await con.resumeTrack();
         res.send(devices);
     });
 

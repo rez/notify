@@ -7,7 +7,7 @@ import styles from './Dashboard.module.css'
 import Modal from '../../components/UI/Modal/Modal';
 import ArtistReleaseList from "../../components/Artist/ArtistReleaseList/ArtistReleaseList";
 import ArtistSetsMap from "../../components/Artist/ArtistSetsMap/ArtistSetsMap";
-import {PLAY} from "../../store/actions/types";
+import {playTrack} from "../..//store/actions";
 import loader from './images/loader.gif';
 
 class Dashboard extends Component {
@@ -20,26 +20,18 @@ class Dashboard extends Component {
         activeReleases : null,
         showReleasesModal : false,
         showSetsModal : false
-    }
+    };
+
     componentDidMount() {
         this.getData();
-    }
+    };
+
     componentDidUpdate(prevProps, prevState, snapshot) {
-    }
+    };
 
     playTrack = async (track) => {
-        const devices = this.props.player.devices;
-        const device = devices.find((device) => {
-            return device.is_active;
-        })
-
-        if(!device) return;
-
-        console.log(track);
-
-        const res = await axios.post('/api/play', {track : track.uri, device : device.id});
-        this.props.onPlay(track);
-    }
+        this.props.playTrack(track, this.props.player.active_device);
+    };
 
     newReleasesHandler = (artist, releases) => {
         this.setState({
@@ -48,7 +40,7 @@ class Dashboard extends Component {
             showReleasesModal : true,
             showSetsModal : false
         });
-    }
+    };
 
     setMapHandler = (artist, sets) => {
         this.setState({
@@ -57,14 +49,14 @@ class Dashboard extends Component {
             showReleasesModal : false,
             showSetsModal : true
         });
-    }
+    };
 
     modalCancelHandler = () => {
         this.setState({
             showReleasesModal : false,
             showSetsModal : false
         })
-    }
+    };
 
     getData = async () => {
         try {
@@ -115,9 +107,4 @@ function mapStateToProps({auth, player}) {
     return { auth, player };
 }
 
-const mapDispatchToProps = dispatch => {
-    return{
-        onPlay : (track) => dispatch({type : PLAY , track : track})
-    }
-};
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, {playTrack})(Dashboard);

@@ -3,7 +3,12 @@ export {
 } from './auth';
 
 export {
-      fetchDevices,
-    pauseTrack,
-    resumeTrack
+        fetchDevices,
+        pauseTrack,
+        resumeTrack,
+        nextTrack,
+        previousTrack,
+        playTrack,
+        onProgress,
+        updateTrackInfo
 } from './player';

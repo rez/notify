@@ -111,6 +111,29 @@ class SpotifyController {
             console.log('eeeeee' + e);
         }
     }
+    async resumeTrack(){
+        try {
+            const result = await axios({
+                method : 'put',
+                url : `https://api.spotify.com/v1/me/player/play`,
+                dataType : 'json',
+                data : {},
+                headers : {
+                    'Authorization' : 'Bearer ' + this.user.spotifyAccessToken,
+                    'Content-Type' : 'application/json'
+                }
+            });
+
+
+            if(result.data){
+                return result.data
+            }else{
+                console.log("ERROR");
+            }
+        }catch(e){
+            console.log('eeeeee' + e);
+        }
+    }
     async playTrack(track, device, position = 0){
         try {
             const result = await axios({
