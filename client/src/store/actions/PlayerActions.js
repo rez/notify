@@ -11,11 +11,12 @@ import {
     UPDATE_TRACK_INFO,
     GET_USER_FOLLOWS
 } from "./ActionTypes";
+import {getActiveDevice} from "../../selectors/PlayerSelectors";
 
 //since were using a polling service to keep state aligned with spotify only update
 //our playing status with an interface to it otherwise state will likely get janky
 //technically we could just update through the  client but possibly want to collect data?
-export const requestPlayerState = (accessToken) => async dispatch => {
+export const requestPlayerState = (accessToken) => async (dispatch, getState) => {
 
     let track = null;
     try{
@@ -28,29 +29,36 @@ export const requestPlayerState = (accessToken) => async dispatch => {
                 'Content-Type' : 'application/json'
             }
         });
-    }catch(e){
-        console.log(e);
-    }
 
+        track = track.data;
 
-    track = track.data;
-
-    if(track.data === ""){
-        console.log("ERRROR");
-        return;
-    }
-
-    const trackState = track.is_playing ? PLAYING : PAUSE;
-    dispatch({ type : UPDATE_TRACK_INFO ,
-        payload : {
-            id: track.item.uri,
-            track: track.item,
-            state: trackState,
-            duration: track.item.duration_ms,
-            progress: track.progress_ms,
-            active_device: track.device.id
+        if(track.data === ""){
+            console.log("ERRROR");
+            return;
         }
-    });
+
+        const state = getState();
+        const activeDevice = getActiveDevice(state);
+        const trackState = track.is_playing ? PLAYING : PAUSE;
+
+        dispatch({ type : UPDATE_TRACK_INFO ,
+            payload : {
+                id: track.item.uri,
+                track: track.item,
+                state: trackState,
+                duration: track.item.duration_ms,
+                progress: track.progress_ms,
+                active_device: track.device.id
+            }
+        });
+    }catch(e){
+        console.log(e.response.status);
+        if(e.response.status === 401){
+            //re auth
+        }
+        return;
+
+    }
 };
 
 export const fetchDevices = () => async dispatch => {

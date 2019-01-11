@@ -9,43 +9,15 @@ class SeatGeekController {
     constructor() {
     }
 
+    async getArtistPerformance(artist = 'travis scott',lat = false, long = false, req){
 
-
-    filterReleaseByDate(release){
-        const d = new Date();
-        d.setMonth(d.getMonth() - 10);
-        const monthAgo = d.getTime() / 1000;
-        const releaseDate = new Date(release.release_date).getTime() / 1000;
-        return monthAgo < releaseDate;
-
-
-    }
-    async getArtistPerformance(artist = 'travis scott',zipcode){
         const artistSlug = artist.replace(" ", "-");
-        // try{
-        //     ipLocation('72.231.5.22')
-        //         .then(function (data) {
-        //             console.dir(data)
-        //         })
-        //         .catch(function (err) {
-        //             console.error(err)
-        //         })
-        // }catch(e){
-        //
-        // }
-        //
-        // iplocation("72.231.5.22")
-        //     .then((res) => {
-        //         console.log(res);
-        //     })
-        //     .catch(err => {
-        //     });
-
+        const params = lat ? `&lon=${long}&lat=${lat}` : `&geoip=${req.ip}`;
 
         try {
             const result = await axios({
                 method : 'get',
-                url : `https://api.seatgeek.com/2/events?performers.slug=${artistSlug}&venue.state=NY&client_id=${config.seatgeek_client_id}`,
+                url : `https://api.seatgeek.com/2/events?performers.slug=${artistSlug}${params}&client_id=${config.seatgeek_client_id}`,
                 dataType : 'json',
                 headers : {
                     'Authorization' : 'Bearer ' + config.seatgeek_client_id,

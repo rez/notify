@@ -1,5 +1,7 @@
 const passport = require("passport");
 const config = require("../config/config");
+const requireLogin = require('../middlewares/requireLogin');
+const refreshSpotify = require('../middlewares/refreshToken');
 
 module.exports = (app) => {
     app.get('/auth/spotify', passport.authenticate('spotify',{
@@ -17,7 +19,7 @@ module.exports = (app) => {
         req.logout();
         res.redirect("/");
     });
-    app.get('/api/current_user',(req,res) =>{
+    app.get('/api/current_user',refreshSpotify,(req,res) =>{
         console.log("SDFSDFSDF");
         res.send(req.user);
     });

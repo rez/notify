@@ -75,12 +75,12 @@ class SpotifyController {
         }
     }
 
-     async findNewMusic(){
+     async findNewMusic(lat, lng, req){
         const following = await this.getSpotifyFollows();
 
         const newReleases = await axios.all(following.map( async follow => {
             const releases = {'releases' : await this.getSpotifyReleases(follow.id) ,
-                              'sets' : await this.seatGeekController.getArtistPerformance(follow.name,11206)};
+                              'sets' : await this.seatGeekController.getArtistPerformance(follow.name,lat, lng, req)};
             return {...follow, releases};
         }))
 

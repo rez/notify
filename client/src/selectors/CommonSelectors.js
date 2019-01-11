@@ -1,0 +1,1 @@
+export const getDevices = state => state.player.devices;

@@ -117,8 +117,11 @@ module.exports = (app) => {
     });
 
     app.get('/api/releases/', requireLogin,refreshSpotify,  async (req,res) => {
+        const lat = req.query.latitude;
+        const lng = req.query.longitude;
+
         const con = new SpotifyController(req.user);
-        const newReleases = await con.findNewMusic();
+        const newReleases = await con.findNewMusic(lat,lng,req);
 
         res.send(newReleases);
     });

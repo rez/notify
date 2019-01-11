@@ -4,6 +4,9 @@ const User =  mongoose.model("users");
 const utils = require("../utils/Utils");
 
 module.exports = async (req, res, next) => {
+    console.log("TEST TOKEN")
+    console.log(req.ip);
+
     const d = new Date();
     const ms = Math.round(d.getTime());
 
@@ -11,9 +14,7 @@ module.exports = async (req, res, next) => {
     console.log(isTokenExpired);
     if(isTokenExpired <= 0){
         const con = new SpotifyController(req.user);
-        console.log(" GET NEW TOKEN");
         const response = await con.refreshAccessToken();
-
 
         try{
             const existingUser = await User.findOneAndUpdate({spotifyID : req.user.spotifyID},
@@ -29,7 +30,6 @@ module.exports = async (req, res, next) => {
 
             if(existingUser){
                 next();
-                console.log("EXISTTTTTTTTN")
                 return;
             }
         }catch (e) {

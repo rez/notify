@@ -5,8 +5,9 @@ import * as  actions from '../store/actions';
 
 import Landing from './Landing/Landing';
 import Header from './Global/Header/Header';
-import Dashboard from "./Dashboard/Dashboard";
-import Player from "./Global/Player/Player";
+import Dashboard from "./Dashboard/DashboardContainer";
+import Player from "./Global/Player/PlayerContainer";
+import withGeo from "./GeoContainer/GeoContainer";
 
 class App extends Component{
     componentDidMount() {
@@ -22,7 +23,7 @@ class App extends Component{
                     <Header/>
                         <div className="container">
                             <Route path="/" exact component={Landing} />
-                            <Route path="/dashboard" exact component={Dashboard} />
+                            <Route path="/dashboard" exact component={withGeo(Dashboard)} />
                         </div>
                         <Player/>
                     </div>
