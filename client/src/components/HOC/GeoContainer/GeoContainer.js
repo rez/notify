@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {getLocation} from "../../store/actions";
+import {getLocation} from "../../../store/actions";
 
 const withGeo = (WrappedComponent) => {
     class GeoContainer extends Component {

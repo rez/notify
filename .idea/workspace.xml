@@ -2,35 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="20ce00f7-a2b8-4d42-be6f-d4b73075c5af" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/client/src/components/Dashboard/Dashboard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Player/Player.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Player/Player.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/Player/PlayerUtils.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/containers/GeoContainer/GeoContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/containers/Global/Player/PlayerContainer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/selectors/CommonSelectors.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/selectors/PlayerSelectors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/HOC/StickyScroll/StickyScroll.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Header/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/client/src/components/Header/Header.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/Artist/ArtistCard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Artist/ArtistCard.module.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/containers/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/containers/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/containers/Dashboard/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/containers/Dashboard/DashboardContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/containers/Dashboard/Dashboard.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Dashboard/Dashboard.module.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/containers/Dashboard/images/loader.gif" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Dashboard/images/loader.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/containers/Global/Player/Player.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/containers/Global/Player/Player.module.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/containers/Global/Player/images/bck.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Player/images/bck.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/containers/Global/Player/images/fwd.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Player/images/fwd.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/containers/Global/Player/images/pause.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Player/images/pause.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/containers/Global/Player/images/play.png" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/Player/images/play.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/actions/DashboardActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/actions/DashboardActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/store/actions/PlayerActions.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/store/actions/PlayerActions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/SeatGeekController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SeatGeekController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/SpotifyController.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/SpotifyController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/refreshToken.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/refreshToken.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/middlewares/requireLogin.js" beforeDir="false" afterPath="$PROJECT_DIR$/middlewares/requireLogin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/authRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/authRoutes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/spotifyRoutes.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/spotifyRoutes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/containers/GeoContainer/GeoContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/HOC/GeoContainer/GeoContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/containers/Global/Header/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/containers/Global/Header/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/containers/Global/Header/Header.module.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/containers/Global/Header/Header.module.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -45,8 +25,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/src/containers/App.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="234">
-                  <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
+                <state relative-caret-position="180">
+                  <caret line="10" selection-start-line="10" selection-end-line="10" />
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
@@ -62,33 +42,6 @@
                   <folding>
                     <element signature="e#0#39#0" expanded="true" />
                   </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/src/components/Player/Player.module.css">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="859">
-                  <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/src/components/Player/PlayerUtils.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="5" selection-start-line="5" selection-end-line="5" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/client/src/components/Player/Player.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="126">
-                  <caret line="7" column="39" selection-start-line="10" selection-end-line="21" selection-end-column="2" />
                 </state>
               </provider>
             </entry>
@@ -130,7 +83,7 @@
             <entry file="file://$PROJECT_DIR$/client/src/components/Dashboard/Dashboard.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="683">
-                  <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+                  <caret line="65" column="5" lean-forward="true" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -138,11 +91,41 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/src/store/actions/PlayerActions.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="439">
-                  <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
+                <state relative-caret-position="774">
+                  <caret line="43" column="45" lean-forward="true" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
+                  <folding>
+                    <element signature="e#0#26#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/src/components/HOC/StickyScroll/StickyScroll.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="471">
+                  <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/src/components/Artist/ArtistCard.module.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="108">
+                  <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/src/components/Header/Header.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="620">
+                  <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -175,11 +158,26 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/src/containers/Global/Header/Header.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="90">
-                  <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-                  <folding>
-                    <element signature="e#0#39#0" expanded="true" />
-                  </folding>
+                <state>
+                  <caret column="28" lean-forward="true" selection-start-column="28" selection-end-column="28" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/client/src/containers/Global/Header/Header.module.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="72">
+                  <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/client/src/components/Header/Header.module.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="360">
+                  <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
                 </state>
               </provider>
             </entry>
@@ -187,8 +185,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/src/components/Player/Player.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="259">
-                  <caret line="57" column="13" selection-start-line="57" selection-start-column="13" selection-end-line="57" selection-end-column="13" />
+                <state relative-caret-position="279">
+                  <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -206,24 +204,6 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/routes/spotifyRoutes.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="36">
-                  <caret line="2" selection-start-line="2" selection-end-line="3" selection-end-column="62" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/services/passport.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="615">
-                  <caret line="58" column="27" selection-start-line="58" selection-start-column="16" selection-end-line="58" selection-end-column="27" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/src/containers/Dashboard/DashboardContainer.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="324">
@@ -235,11 +215,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/client/src/components/Dashboard/Dashboard.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="467">
-                  <caret line="49" column="20" lean-forward="true" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+                <state relative-caret-position="251">
+                  <caret line="41" column="12" selection-start-line="41" selection-start-column="12" selection-end-line="41" selection-end-column="12" />
                   <folding>
                     <element signature="e#0#26#0" expanded="true" />
                   </folding>
@@ -265,8 +245,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>modal</find>
-      <find>device</find>
       <find>playtrac</find>
       <find>resumet</find>
       <find>updatePlayerInfo</find>
@@ -293,8 +271,10 @@
       <find>fetchde</find>
       <find>player.</find>
       <find>pause</find>
-      <find>msToMins</find>
       <find>mstom</find>
+      <find>saveRef</find>
+      <find>msToMins</find>
+      <find>measure</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -303,12 +283,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/client/src/containers/Global/Header/Header.js" />
-        <option value="$PROJECT_DIR$/index.js" />
-        <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/client/src/containers/Landing/Landing.module.css" />
-        <option value="$PROJECT_DIR$/client/src/containers/Global/Header/Header.module.css" />
-        <option value="$PROJECT_DIR$/client/src/components/Artist/ArtistCard.module.css" />
         <option value="$PROJECT_DIR$/client/src/containers/Dashboard/Dashboard.module.css" />
         <option value="$PROJECT_DIR$/client/src/components/Artist/ArtistCard.js" />
         <option value="$PROJECT_DIR$/config/prod.js" />
@@ -349,11 +323,17 @@
         <option value="$PROJECT_DIR$/client/src/components/Player/Player.js" />
         <option value="$PROJECT_DIR$/client/src/containers/Dashboard/Dashboard.js" />
         <option value="$PROJECT_DIR$/client/src/store/actions/DashboardActions.js" />
-        <option value="$PROJECT_DIR$/client/src/containers/App.js" />
         <option value="$PROJECT_DIR$/client/src/containers/GeoContainer/GeoContainer.js" />
-        <option value="$PROJECT_DIR$/client/src/components/Dashboard/Dashboard.js" />
         <option value="$PROJECT_DIR$/client/src/containers/Dashboard/DashboardContainer.js" />
         <option value="$PROJECT_DIR$/client/src/store/actions/PlayerActions.js" />
+        <option value="$PROJECT_DIR$/client/src/components/Dashboard/Dashboard.js" />
+        <option value="$PROJECT_DIR$/client/src/containers/App.js" />
+        <option value="$PROJECT_DIR$/client/src/containers/Global/Header/Header.module.css" />
+        <option value="$PROJECT_DIR$/client/src/containers/Global/Header/Header.js" />
+        <option value="$PROJECT_DIR$/client/src/components/HOC/StickyScroll/StickyScroll.js" />
+        <option value="$PROJECT_DIR$/client/src/components/Artist/ArtistCard.module.css" />
+        <option value="$PROJECT_DIR$/client/src/components/Header/Header.module.css" />
+        <option value="$PROJECT_DIR$/client/src/components/Header/Header.js" />
       </list>
     </option>
   </component>
@@ -392,32 +372,88 @@
               <item name="notify" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="notify" type="b2602c69:ProjectViewProjectNode" />
               <item name="notify" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
-              <item name="actions" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Artist" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="notify" type="b2602c69:ProjectViewProjectNode" />
               <item name="notify" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
-              <item name="reducers" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="notify" type="b2602c69:ProjectViewProjectNode" />
               <item name="notify" type="462c0819:PsiDirectoryNode" />
               <item name="client" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="store" type="462c0819:PsiDirectoryNode" />
-              <item name="reducers" type="462c0819:PsiDirectoryNode" />
-              <item name="dashboard" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Header" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="notify" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notify" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="HOC" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="notify" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notify" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="HOC" type="462c0819:PsiDirectoryNode" />
+              <item name="StickyScroll" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="notify" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notify" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="Player" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="notify" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notify" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="notify" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notify" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="Dashboard" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="notify" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notify" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="Global" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="notify" type="b2602c69:ProjectViewProjectNode" />
+              <item name="notify" type="462c0819:PsiDirectoryNode" />
+              <item name="client" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="containers" type="462c0819:PsiDirectoryNode" />
+              <item name="Global" type="462c0819:PsiDirectoryNode" />
+              <item name="Header" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -438,11 +474,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/client/src/components/Header" />
+      <recent name="$PROJECT_DIR$/client/src/components/HOC" />
       <recent name="$PROJECT_DIR$/client/src/components/Dashboard" />
       <recent name="$PROJECT_DIR$/client/src/components/Player" />
       <recent name="$PROJECT_DIR$/client/src/store/reducers/auth" />
-      <recent name="$PROJECT_DIR$/client/src/store/reducers/player" />
-      <recent name="$PROJECT_DIR$/client/src/reducers/reducers" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -470,12 +506,12 @@
       <workItem from="1545946357372" duration="16350000" />
       <workItem from="1546445064053" duration="33668000" />
       <workItem from="1546614714276" duration="19699000" />
-      <workItem from="1546874533820" duration="115756000" />
+      <workItem from="1546874533820" duration="128659000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="185473000" />
+    <option name="totallyTimeSpent" value="198376000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1680" y="23" width="1920" height="1057" extended-state="6" />
@@ -508,54 +544,6 @@
     <option name="version" value="1" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/config/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="1" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
-          <folding>
-            <element signature="e#0#54#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/dev.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/prod.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="2" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/store/reducers/auth/authReducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="9" lean-forward="true" selection-end-line="11" selection-end-column="1" />
-          <folding>
-            <element signature="e#0#48#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/store/actions/LocationActions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="288">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/store/reducers/location/initialState.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -808,23 +796,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/containers/Global/Header/Header.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Player/Player.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="39" selection-start-line="10" selection-end-line="21" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/src/containers/Global/Player/PlayerContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="594">
@@ -862,17 +833,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/containers/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
-          <caret line="13" column="31" lean-forward="true" selection-start-line="13" selection-start-column="31" selection-end-line="13" selection-end-column="31" />
-          <folding>
-            <element signature="e#0#39#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/containers/GeoContainer/GeoContainer.js">
+    <entry file="file://$PROJECT_DIR$/client/src/components/HOC/GeoContainer/GeoContainer.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="342">
           <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
@@ -882,12 +843,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/Dashboard/Dashboard.js">
+    <entry file="file://$PROJECT_DIR$/client/src/store/actions/PlayerActions.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="683">
-          <caret line="61" column="5" lean-forward="true" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+        <state relative-caret-position="774">
+          <caret line="43" column="45" lean-forward="true" selection-start-line="43" selection-start-column="45" selection-end-line="43" selection-end-column="45" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/containers/App.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -902,10 +873,72 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/store/actions/PlayerActions.js">
+    <entry file="file://$PROJECT_DIR$/client/src/components/Header/Header.module.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="42" column="8" selection-start-line="42" selection-start-column="8" selection-end-line="42" selection-end-column="8" />
+        <state relative-caret-position="288">
+          <caret line="16" column="19" selection-start-line="16" selection-start-column="19" selection-end-line="16" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Player/Player.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="23" column="17" selection-start-line="23" selection-start-column="17" selection-end-line="23" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Dashboard/Dashboard.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="683">
+          <caret line="65" column="5" lean-forward="true" selection-start-line="65" selection-start-column="5" selection-end-line="65" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#26#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/HOC/StickyScroll/StickyScroll.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="471">
+          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Artist/ArtistCard.module.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="6" column="31" selection-start-line="6" selection-start-column="31" selection-end-line="6" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/containers/Global/Header/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="28" lean-forward="true" selection-start-column="28" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/containers/Global/Header/Header.module.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Header/Header.module.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="42" lean-forward="true" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/Header/Header.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="38" column="27" selection-start-line="38" selection-start-column="27" selection-end-line="38" selection-end-column="27" />
           <folding>
             <element signature="e#0#26#0" expanded="true" />
           </folding>

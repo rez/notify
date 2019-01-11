@@ -7,7 +7,7 @@ import Landing from './Landing/Landing';
 import Header from './Global/Header/Header';
 import Dashboard from "./Dashboard/DashboardContainer";
 import Player from "./Global/Player/PlayerContainer";
-import withGeo from "./GeoContainer/GeoContainer";
+import withGeo from "../components/HOC/GeoContainer/GeoContainer";
 
 class App extends Component{
     componentDidMount() {
@@ -20,7 +20,7 @@ class App extends Component{
             <div>
                 <BrowserRouter>
                     <div style={{'marginBottom' : '100px'}} className="siteWrap">
-                    <Header/>
+                        <Header/>
                         <div className="container">
                             <Route path="/" exact component={Landing} />
                             <Route path="/dashboard" exact component={withGeo(Dashboard)} />

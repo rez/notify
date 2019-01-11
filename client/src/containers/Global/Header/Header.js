@@ -1,34 +1,28 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import styles from './Header.module.css';
+import stickOnScroll from "../../../components/HOC/StickyScroll/StickyScroll"
+import Header from "../../../components/Header/Header";
+import styles from "./Header.module.css";
 
-class Header extends Component {
-    renderContent(){
-        const a = this.props.auth;
-        if(a.auth && a.auth.data){
+class HeaderContainer extends Component {
+    state = {
+        sticky : this.props.sticky,
+        mounted : false
+    }
 
-            return <ul className="right"><li><a href="/api/logout">logout</a></li><li><Link to="/dashboard">Dashboard</Link></li></ul>;
-
-        }else{
-            return <ul className="right"><li><a href="/auth/spotify">Login with Spotify</a></li></ul>;
-        }
+    componentDidMount(){
+      this.setState({mounted : true})
+        this.props.getMeasure(this.containerNode.getBoundingClientRect().height);
 
     }
 
     render(){
         return (
-            <nav>
-                <div className={`black`}>
-                    {true ? console.log(this.props.auth) : null}
-                        <Link to={this.props.auth ? '/' :  '/'}
-                            className={styles.logo}>
-                            Notify
-                        </Link>
-
-                    {this.renderContent()}
-                </div>
-            </nav>
+            <div className={this.props.sticky ? styles.sticky : null}
+                 ref={(node) => this.containerNode = node}>
+                <Header {...this.props} {...this.state} />
+            </div>
         );
     }
 }
@@ -36,4 +30,4 @@ class Header extends Component {
 function mapStateToProps({auth}) {
     return { auth };
 }
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps)(stickOnScroll(HeaderContainer));
