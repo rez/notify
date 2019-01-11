@@ -1,4 +1,4 @@
-import {GET_LOCATION} from './types';
+import {GET_LOCATION} from './ActionTypes';
 
 export const getLocation = () => async dispatch => {
 

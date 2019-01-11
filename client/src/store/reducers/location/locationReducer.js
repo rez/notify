@@ -1,4 +1,4 @@
-import { GET_LOCATION} from "../../actions/types";
+import { GET_LOCATION} from "../../actions/ActionTypes";
 import {defaultState} from "./initialState";
 
 export default function(state = defaultState, action){

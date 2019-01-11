@@ -12,25 +12,6 @@ class Landing extends Component{
        // this.getData();
     }
 
-    getData = async () => {
-        try {
-            const res = await axios.get('/api/top/' + this.state.page);
-            if(res){
-
-                const page = this.state.page;
-                const items = this.state.items;
-                const newItems = res.data.items;
-                this.setState(
-                    {
-                        page : page + 1,
-                        items : [...items, ...newItems]
-                    }
-                )
-            }
-        }catch(e){
-
-        }
-    }
 
     render(){
         return (

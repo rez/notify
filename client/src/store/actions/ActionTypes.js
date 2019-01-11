@@ -11,3 +11,4 @@ export const PREVIOUS = 'previous';
 export const UPDATE_TRACK_INFO = 'update_track_info';
 export const NEXT = 'next';
 export const GET_LOCATION = 'get_location';
+export const GET_USER_FOLLOWS = 'get_user_follows';

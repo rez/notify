@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import {geolocated} from 'react-geolocated';
 import {connect} from 'react-redux';
 import FollowGrid from '../../components/Follow/FollowGrid.js';
 import {playItem} from "../../store/actions";
@@ -8,14 +7,13 @@ import styles from './Dashboard.module.css'
 import Modal from '../../components/UI/Modal/Modal';
 import ArtistReleaseList from "../../components/Artist/ArtistReleaseList/ArtistReleaseList";
 import ArtistSetsMap from "../../components/Artist/ArtistSetsMap/ArtistSetsMap";
-import {playTrack} from "../..//store/actions";
-import {getLocation} from "../../store/actions";
+import {getLocation, getUserFollows, playTrack} from "../../store/actions";
 import loader from './images/loader.gif';
 
 class Dashboard extends Component {
     state = {
         page : 0,
-        items : [],
+        items : this.props.dashboard.follows,
         activeReleasesArtist : null,
         activeSetsArtist : null,
         activeSets : null,
@@ -30,11 +28,11 @@ class Dashboard extends Component {
     };
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-
         if(this.props.location.init && !this.state.init){
-            this.getData();
+            this.props.getUserFollows(this.props.location.latitude, this.props.location.longitude)
             this.setState({init : true});
         }
+        console.log(this.props.dashboard.follows);
     };
 
     playTrack = async (track) => {
@@ -66,31 +64,6 @@ class Dashboard extends Component {
         })
     };
 
-    getData = async () => {
-        try {
-            const res = await axios.get('/api/releases', {
-                params : {
-                    longitude: this.props.location.longitude,
-                    latitude: this.props.location.latitude
-                }
-            });
-            if(res){
-
-                const page = this.state.page;
-                const items = this.state.items;
-                const newItems = res.data;
-                this.setState(
-                    {
-                        page : page + 1,
-                        items : [...items, ...newItems]
-                    }
-                )
-            }
-        }catch(e){
-
-        }
-    }
-
     render(){
         return (
             <div className={styles.dashWrapper}>
@@ -101,10 +74,10 @@ class Dashboard extends Component {
                     {this.state.activeSets ? <ArtistSetsMap lat={this.props.location.latitude} lon={this.props.location.longitude} sets={this.state.activeSets} artist={this.state.activeSetsArtist}/> : null}
                 </Modal>
 
-                {!this.state.items.length ?
+                {!this.props.dashboard.follows ?
                     <img className={styles.loader} src={loader}/> :
                     <FollowGrid
-                        items={this.state.items}
+                        items={this.props.dashboard.follows}
                         showNewReleases={this.newReleasesHandler}
                         showSetMap={this.setMapHandler}
                     >
@@ -116,10 +89,12 @@ class Dashboard extends Component {
     }
 }
 
-function mapStateToProps({auth, player, location}) {
-    return { auth, player, location };
+function mapStateToProps({auth, player, location, dashboard}) {
+    return { auth, player, location, dashboard };
 }
 
 export default connect(
     mapStateToProps,
-    {playTrack, getLocation})(Dashboard);
+    {playTrack,
+     getLocation,
+     getUserFollows})(Dashboard);

@@ -1,10 +1,12 @@
-import { FETCH_USER} from "../../actions/ActionTypes";
+import {
+    GET_USER_FOLLOWS
+} from "../../actions/ActionTypes";
 import {defaultState} from "./initialState";
 
 export default function(state = defaultState, action){
     switch (action.type) {
-        case FETCH_USER:
-            return { ...state, auth : action.payload || false};
+        case  GET_USER_FOLLOWS:
+            return{...state, follows : action.follows}
         default:
             return state;
 

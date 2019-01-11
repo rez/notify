@@ -6,8 +6,15 @@ import pause from './images/pause.png';
 import forward from './images/fwd.png';
 import back from './images/bck.png';
 import axios from "axios";
-import {UPDATE_TRACK_INFO, PAUSE, UNINIT, PREVIOUS, NEXT, PLAYING} from "../../../store/actions/types";
-import {onProgress, pauseTrack, resumeTrack, nextTrack, previousTrack, playTrack, updateTrackInfo} from "../../../store/actions";
+import {PAUSE, UNINIT} from "../../../store/actions/ActionTypes";
+import {requestPlayerState,
+        onProgress,
+        pauseTrack,
+        resumeTrack,
+        nextTrack,
+        previousTrack,
+        playTrack
+        } from "../../../store/actions";
 
 class Player extends Component {
     state = {
@@ -20,32 +27,12 @@ class Player extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         this.startSpotifyPoll();
-
     }
 
     startSpotifyPoll = () => {
         if(this.props.auth.auth && !this.state.timer) {
-            let timer = setInterval(this.pollSpotifyStatus, 1000);
+            let timer = setInterval(() => {this.props.requestPlayerState(this.props.auth.auth.data.spotifyAccessToken)}, 1000);
             this.setState({timer});
-        }
-    };
-
-    pollSpotifyStatus = async () =>{
-        try {
-            const result = await axios({
-                method : 'get',
-                url : 'https://api.spotify.com/v1/me/player',
-                dataType : 'json',
-                headers : {
-                    'Authorization' : 'Bearer ' + this.props.auth.auth.data.spotifyAccessToken,
-                    'Content-Type' : 'application/json'
-                }
-            });
-
-            this.props.updateTrackInfo(result.data);
-
-        }catch(e){
-            console.log('eeeeee' + e);
         }
     };
 
@@ -108,4 +95,4 @@ class Player extends Component {
 function mapStateToProps({auth, player}) {
     return { auth, player };
 }
-export default connect(mapStateToProps,{updateTrackInfo, onProgress, pauseTrack, resumeTrack, nextTrack, previousTrack, playTrack})(Player);
+export default connect(mapStateToProps,{requestPlayerState, onProgress, pauseTrack, resumeTrack, nextTrack, previousTrack, playTrack})(Player);

@@ -1,4 +1,4 @@
-import {UNINIT} from "../../actions/types";
+import {UNINIT} from "../../actions/ActionTypes";
 
 export const defaultState = {
     active_device : null,

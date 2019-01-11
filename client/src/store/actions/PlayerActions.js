@@ -1,10 +1,44 @@
 import axios from "axios";
-import {FETCH_DEVICES, RESUME, PAUSE, NEXT, PREVIOUS, PLAY, UPDATE_TIMER, PLAYING, UPDATE_TRACK_INFO} from "./types";
+import {
+    FETCH_DEVICES,
+    RESUME,
+    PAUSE,
+    NEXT,
+    PREVIOUS,
+    PLAY,
+    UPDATE_TIMER,
+    PLAYING,
+    UPDATE_TRACK_INFO,
+    GET_USER_FOLLOWS
+} from "./ActionTypes";
 
 //since were using a polling service to keep state aligned with spotify only update
 //our playing status with an interface to it otherwise state will likely get janky
 //technically we could just update through the  client but possibly want to collect data?
-export const updateTrackInfo = (track) => async dispatch => {
+export const requestPlayerState = (accessToken) => async dispatch => {
+
+    let track = null;
+    try{
+        track = await axios({
+            method : 'get',
+            url : 'https://api.spotify.com/v1/me/player',
+            dataType : 'json',
+            headers : {
+                'Authorization' : 'Bearer ' + accessToken,
+                'Content-Type' : 'application/json'
+            }
+        });
+    }catch(e){
+        console.log(e);
+    }
+
+
+    track = track.data;
+
+    if(track.data === ""){
+        console.log("ERRROR");
+        return;
+    }
 
     const trackState = track.is_playing ? PLAYING : PAUSE;
     dispatch({ type : UPDATE_TRACK_INFO ,
@@ -22,9 +56,12 @@ export const updateTrackInfo = (track) => async dispatch => {
 export const fetchDevices = () => async dispatch => {
     const res = await axios.get('/api/devices');
     let activeDevice = null;
-    activeDevice = res.data.devices.find((device) => {
-        return device;
-    });
+
+    if(res.data.devices){
+        activeDevice = res.data.devices.find((device) => {
+            return device;
+        });
+    }
     dispatch({type : FETCH_DEVICES, devices:res.data.devices, active_device : activeDevice});
 };
 
@@ -37,7 +74,6 @@ export const pauseTrack = (external = false) => async dispatch => {
     if(!external){
         const res = await axios.post('/api/pause', {});
     }
-
     dispatch({type : PAUSE});
 };
 
@@ -62,4 +98,16 @@ export const onProgress = (progress,duration_ms) => async dispatch => {
     dispatch({type : UPDATE_TIMER, duration : duration_ms, progress : progress});
 };
 
+export const getUserFollows = (latitude, longitude) => async dispatch => {
+    const res = await axios.get('/api/releases', {
+        params : {
+            longitude: longitude,
+            latitude: latitude
+        }
+    });
+    if(res){
+        dispatch({type : GET_USER_FOLLOWS, follows : res.data});
+    }
+
+};
 

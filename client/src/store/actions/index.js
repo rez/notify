@@ -1,9 +1,9 @@
 export {
       fetchUser
-} from './auth';
+} from './AuthActions';
 export {
         getLocation
-} from './location';
+} from './LocationActions';
 export {
         fetchDevices,
         pauseTrack,
@@ -12,5 +12,8 @@ export {
         previousTrack,
         playTrack,
         onProgress,
-        updateTrackInfo
-} from './player';
+        requestPlayerState,
+} from './PlayerActions';
+export {
+        getUserFollows
+}       from './DashboardActions'
