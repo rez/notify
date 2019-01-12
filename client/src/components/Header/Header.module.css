@@ -27,7 +27,7 @@
     height: 1px;
     background-size: 3000%;
 
-    background-image: linear-gradient(to right, #333, #1ED760, #1DB954, #333);
+    background-image: linear-gradient(to right, #000, #1ED760, #1DB954, #000);
 }
 @-webkit-keyframes fade {
     0% {

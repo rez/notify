@@ -5,7 +5,9 @@ import Modal from '..//UI/Modal/Modal';
 import ArtistReleaseList from "..//Artist/ArtistReleaseList/ArtistReleaseList";
 import ArtistSetsMap from "../Artist/ArtistSetsMap/ArtistSetsMap";
 import FollowGrid from '../Follow/FollowGrid.js';
+import FilterNav from '../FilterNav/FilterNav';
 import loader from './images/loader.gif';
+
 
 
 const propTypes = {
@@ -21,7 +23,7 @@ const propTypes = {
     activeReleasesArtist :PropTypes.string.isRequired,
     activeSetsArtist : PropTypes.string.isRequired,
     location : PropTypes.shape({}).isRequired,
-
+    navFilters :PropTypes.array.isRequired,
 };
 
 const Dashboard = ({
@@ -36,12 +38,12 @@ const Dashboard = ({
     setMapHandler,
     activeReleasesArtist,
     activeSetsArtist,
-    location
+    location,
+    navFilters
 }) => {
 
     return (
         <div className={styles.dashWrapper}>
-
             <Modal show={showReleasesModal} modalClosed={modalCancelHandler}>
                 {activeReleases ?
                     <ArtistReleaseList play={playTrack} releases={activeReleases} artist={activeReleasesArtist}/> :
@@ -52,6 +54,7 @@ const Dashboard = ({
                     <ArtistSetsMap lat={location.latitude} lon={location.longitude} sets={activeSets} artist={activeSetsArtist}/> :
                     null}
             </Modal>
+            <FilterNav navFilters={navFilters} />
             {!dashboard.follows.length ?
                 <img className={styles.loader} src={loader}/> :
                 <FollowGrid

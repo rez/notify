@@ -4,6 +4,10 @@ import {playItem} from "../../store/actions";
 import axios from "axios";
 import {getLocation, getUserFollows, playTrack} from "../../store/actions";
 import Dashboard from "../../components/Dashboard/Dashboard";
+import * as constants from '../../constants/constants';
+import {MOST_PLAYED_ARTIST} from "../../constants/constants";
+import {FOLLOWING} from "../../constants/constants";
+import {UNSEEN_RELEASES} from "../../constants/constants";
 
 class DashboardContainer extends Component {
     state = {
@@ -17,6 +21,22 @@ class DashboardContainer extends Component {
         showSetsModal : false,
         init : false
     };
+
+    dashNavFilter = [
+        {
+            label : FOLLOWING,
+            onClick : () =>{ return true},
+            active : true
+        },
+        {
+            label : MOST_PLAYED_ARTIST,
+            onClick : () =>{ return true},
+        },
+        {
+            label : UNSEEN_RELEASES,
+            onClick : () =>{ return true},
+        }
+    ];
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if(this.props.location.init && !this.state.init){
@@ -59,6 +79,7 @@ class DashboardContainer extends Component {
             <Dashboard
                 {...this.props}
                 {...this.state}
+                navFilters={this.dashNavFilter}
                 setMapHandler={this.setMapHandler}
                 modalCancelHandler={this.modalCancelHandler}
                 newReleasesHandler={this.newReleasesHandler}

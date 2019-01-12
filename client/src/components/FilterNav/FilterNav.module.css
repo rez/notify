@@ -1,0 +1,21 @@
+.filter__nav{
+
+}
+.filter__nav__container{
+    margin-bottom: 10px;
+}
+.filter__nav__link{
+    margin-right: 20px;
+    padding: 5px;
+    cursor: pointer;
+    transition: all .1s linear;
+}
+.filter__nav__link:hover,.filter__nav__active{
+    background: black;
+    color: white;
+    font-style: italic;
+    font-weight: bold;
+}
+.filter__nav__active{
+
+}
