@@ -9,7 +9,7 @@ class HeaderContainer extends Component {
     state = {
         sticky : this.props.sticky,
         mounted : false
-    }
+    };
 
     componentDidMount(){
       this.setState({mounted : true})

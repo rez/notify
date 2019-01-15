@@ -6,6 +6,7 @@ import * as  actions from '../store/actions';
 import Landing from './Landing/Landing';
 import Header from './Global/Header/Header';
 import Dashboard from "./Dashboard/DashboardContainer";
+import withAuth from "../components/HOC/PrivateRoute";
 import Player from "./Global/Player/PlayerContainer";
 import withGeo from "../components/HOC/GeoContainer/GeoContainer";
 
@@ -14,7 +15,6 @@ class App extends Component{
         this.props.fetchUser();
         this.props.fetchDevices();
     }
-
     render(){
         return (
             <div>
@@ -23,7 +23,8 @@ class App extends Component{
                         <Header/>
                         <div className="container">
                             <Route path="/" exact component={Landing} />
-                            <Route path="/dashboard" exact component={withGeo(Dashboard)} />
+                            <Route path="/dashboard" exact component={withAuth(withGeo(Dashboard))} />
+                            <Route path="/dashboard/:filter"  component={withAuth(withGeo(Dashboard))} />
                         </div>
                         <Player/>
                     </div>

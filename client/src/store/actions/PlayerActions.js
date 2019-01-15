@@ -106,16 +106,3 @@ export const onProgress = (progress,duration_ms) => async dispatch => {
     dispatch({type : UPDATE_TIMER, duration : duration_ms, progress : progress});
 };
 
-export const getUserFollows = (latitude, longitude) => async dispatch => {
-    const res = await axios.get('/api/releases', {
-        params : {
-            longitude: longitude,
-            latitude: latitude
-        }
-    });
-    if(res){
-        dispatch({type : GET_USER_FOLLOWS, follows : res.data});
-    }
-
-};
-

@@ -1,6 +1,7 @@
 const axios = require('axios');
 const SeatGeekController = require("./SeatGeekController");
 const config = require("../config/config");
+const constants = require("../constants/SpotifyConstants");
 
 
 class SpotifyController {
@@ -60,11 +61,9 @@ class SpotifyController {
                 }
             });
 
-
             if(result.data){
                 const releases = result.data.items;
                 const filteredReleases = releases.filter(this.filterReleaseByDate);
-
 
                 return filteredReleases;
             }else{
@@ -75,8 +74,41 @@ class SpotifyController {
         }
     }
 
-     async findNewMusic(lat, lng, req){
-        const following = await this.getSpotifyFollows();
+    async getSpotifyMostPlayed(page = 0, results = []) {
+        console.log("GET MOST PLAYED");
+        const offset = 50 * page;
+        try {
+            const result = await axios({
+                method : 'get',
+                url : `https://api.spotify.com/v1/me/top/artists?offset=${offset}`,
+                dataType : 'json',
+                headers : {
+                    'Authorization' : 'Bearer ' + this.user.spotifyAccessToken,
+                    'Content-Type' : 'application/json'
+                }
+            });
+
+            console.log(result.data);
+
+
+            if(result.data){
+                const max = 10;
+                const newPage = page + 1;
+
+                results = [...results, ...result.data.items];
+                if(max > (newPage * 50)) this.getSpotifyMostPlayed(this.user,newPage,results);
+                else return results;
+            }else{
+                console.log("ERROR");
+            }
+        }catch(e){
+            console.log('eeeeee' + e);
+        }
+    }
+
+     async findNewMusic(lat, lng, req, type = constants.SPOTIFY_FOLLOWS){
+
+        const following = type === constants.SPOTIFY_FOLLOWS ? await this.getSpotifyFollows() : await this.getSpotifyMostPlayed();
 
         const newReleases = await axios.all(following.map( async follow => {
             const releases = {'releases' : await this.getSpotifyReleases(follow.id) ,

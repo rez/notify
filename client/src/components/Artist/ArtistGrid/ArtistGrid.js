@@ -1,11 +1,20 @@
 import React from 'react';
-import Card from "../../components/Artist/ArtistCard";
+import Card from "../ArtistCard";
+import styles from './ArtistGrid.module.css';
 
-const FollowGrid = (props) => {
+const ArtistGrid = (props) => {
 
 
     return (
-        <div className="row s5 m6">
+        <div className={`row s5 m6 ${styles.ArtistGrid}`}
+             style={{
+                 transform: props.show ? 'translateX(0)' : "translateX(-100vw)",
+                 opacity: props.show ? '1' : '0',
+                 pointerEvents : props.show ? 'auto' : 'none',
+                 visibility : props.show ? 'visible' : 'hidden',
+                 position : props.show ? 'relative' : 'absolute',
+             }}
+        >
             {
                 props.items.map( item => {
                     return (<Card
@@ -25,4 +34,4 @@ const FollowGrid = (props) => {
     );
 };
 
-export default FollowGrid;
+export default ArtistGrid;

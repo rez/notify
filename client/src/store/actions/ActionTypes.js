@@ -12,3 +12,8 @@ export const UPDATE_TRACK_INFO = 'update_track_info';
 export const NEXT = 'next';
 export const GET_LOCATION = 'get_location';
 export const GET_USER_FOLLOWS = 'get_user_follows';
+export const GET_USER_MOST_PLAYED = 'get_user_most_played';
+export const FETCH_USER_IN_PROGRESS = 'fetch_user_in_progress';
+export const UPDATE_ACTIVE_FILTER = 'update_active_filter';
+export const FETCH_REQUEST = 'fetch_request';
+

@@ -3,8 +3,9 @@ const bodyParser = require('body-parser')
 const requireLogin = require('../middlewares/requireLogin');
 const refreshSpotify = require('../middlewares/refreshToken');
 const SpotifyController = require('../controllers/SpotifyController');
-
 const SeatGeekController = require('../controllers/SeatGeekController');
+const constants = require("../constants/SpotifyConstants");
+
 
 module.exports = (app) => {
 
@@ -121,7 +122,16 @@ module.exports = (app) => {
         const lng = req.query.longitude;
 
         const con = new SpotifyController(req.user);
-        const newReleases = await con.findNewMusic(lat,lng,req);
+        const newReleases = await con.findNewMusic(lat,lng,req, constants.SPOTIFY_FOLLOWS);
+
+        res.send(newReleases);
+    });
+    app.get('/api/releases/mostplayed', requireLogin,refreshSpotify,  async (req,res) => {
+        const lat = req.query.latitude;
+        const lng = req.query.longitude;
+
+        const con = new SpotifyController(req.user);
+        const newReleases = await con.findNewMusic(lat,lng,req, constants.SPOTIFY_MOST_PLAYED);
 
         res.send(newReleases);
     });

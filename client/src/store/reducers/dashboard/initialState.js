@@ -1,3 +1,6 @@
+import * as constants from '../../../constants/constants';
 export const defaultState = {
-    follows:[]
+    follows:[],
+    mostPlayed:[],
+    activeGrid:constants.FOLLOWING
 };

@@ -9,6 +9,7 @@
     padding: 5px;
     cursor: pointer;
     transition: all .1s linear;
+    color: black;
 }
 .filter__nav__link:hover,.filter__nav__active{
     background: black;

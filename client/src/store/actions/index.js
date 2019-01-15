@@ -15,5 +15,7 @@ export {
         requestPlayerState,
 } from './PlayerActions';
 export {
-        getUserFollows
+        getUserFollows,
+        getUserMostPlayed,
+        updateActiveFilter
 }       from './DashboardActions'

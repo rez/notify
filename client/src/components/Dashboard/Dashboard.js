@@ -2,11 +2,13 @@ import React from 'react';
 import styles from './Dashboard.module.css';
 import PropTypes from 'prop-types';
 import Modal from '..//UI/Modal/Modal';
+import Loader from '../UI/Loader/Loader'
 import ArtistReleaseList from "..//Artist/ArtistReleaseList/ArtistReleaseList";
 import ArtistSetsMap from "../Artist/ArtistSetsMap/ArtistSetsMap";
-import FollowGrid from '../Follow/FollowGrid.js';
+import ArtistGrid from '../Artist/ArtistGrid/ArtistGrid.js';
 import FilterNav from '../FilterNav/FilterNav';
-import loader from './images/loader.gif';
+import loader from '../UI/Loader/images/loader.gif';
+import * as constants from '../../constants/constants';
 
 
 
@@ -20,7 +22,8 @@ const propTypes = {
     dashboard : PropTypes.shape({}).isRequired,
     newReleasesHandler : PropTypes.func.isRequired,
     setMapHandler : PropTypes.func.isRequired,
-    activeReleasesArtist :PropTypes.string.isRequired,
+    activeReleasesArtist :PropTypes.string.isRe4quired,
+    basePath :PropTypes.string.isRequired,
     activeSetsArtist : PropTypes.string.isRequired,
     location : PropTypes.shape({}).isRequired,
     navFilters :PropTypes.array.isRequired,
@@ -39,7 +42,8 @@ const Dashboard = ({
     activeReleasesArtist,
     activeSetsArtist,
     location,
-    navFilters
+    navFilters,
+    basePath
 }) => {
 
     return (
@@ -54,16 +58,26 @@ const Dashboard = ({
                     <ArtistSetsMap lat={location.latitude} lon={location.longitude} sets={activeSets} artist={activeSetsArtist}/> :
                     null}
             </Modal>
-            <FilterNav navFilters={navFilters} />
-            {!dashboard.follows.length ?
-                <img className={styles.loader} src={loader}/> :
-                <FollowGrid
+            <FilterNav basePath={basePath} active={dashboard.activeGrid} navFilters={navFilters} />
+            {dashboard.follows.length ?
+                <ArtistGrid
+                    show={dashboard.activeGrid === constants.FOLLOWING ? true : false}
                     items={dashboard.follows}
                     showNewReleases={newReleasesHandler}
                     showSetMap={setMapHandler}
                 >
-                </FollowGrid>
+                </ArtistGrid> : null
             }
+            {dashboard.mostPlayed.length ?
+                <ArtistGrid
+                    show={dashboard.activeGrid === constants.MOST_PLAYED_ARTIST ? true : false}
+                    items={dashboard.mostPlayed}
+                    showNewReleases={newReleasesHandler}
+                    showSetMap={setMapHandler}
+                >
+                </ArtistGrid> : null
+            }
+            {dashboard.fetching ? <Loader/> : null}
 
         </div>
     )

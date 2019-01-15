@@ -31,7 +31,6 @@ const Header = ({
     return (
         <nav className={sticky ? styles.sticky : null} >
             <div className={`black`}>
-                {true ? console.log(auth) : null}
                     <Link to={auth ? '/' :  '/'}
                           className={styles.logo}>
                         Notify
