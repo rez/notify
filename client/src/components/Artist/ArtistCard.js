@@ -7,7 +7,7 @@ const card = (props) => {
     return (
         <div className={`card col  grey lighten-5 z-depth-1 s3 text-lighten-6 ${styles.a__s3}`}>
             <div className="card-image">
-                <img src={props.img}/>
+                <img className={styles.ArtistImage} src={props.img}/>
                 <span className="card-title">{props.name}</span>
             </div>
             <div className="card-content">

@@ -120,18 +120,20 @@ module.exports = (app) => {
     app.get('/api/releases/', requireLogin,refreshSpotify,  async (req,res) => {
         const lat = req.query.latitude;
         const lng = req.query.longitude;
+        const after = req.query.after;
 
         const con = new SpotifyController(req.user);
-        const newReleases = await con.findNewMusic(lat,lng,req, constants.SPOTIFY_FOLLOWS);
+        const newReleases = await con.findNewMusic(lat,lng,req, after, constants.SPOTIFY_FOLLOWS);
 
         res.send(newReleases);
     });
     app.get('/api/releases/mostplayed', requireLogin,refreshSpotify,  async (req,res) => {
         const lat = req.query.latitude;
         const lng = req.query.longitude;
+        const offset = req.query.offset;
 
         const con = new SpotifyController(req.user);
-        const newReleases = await con.findNewMusic(lat,lng,req, constants.SPOTIFY_MOST_PLAYED);
+        const newReleases = await con.findNewMusic(lat,lng,req, offset,constants.SPOTIFY_MOST_PLAYED);
 
         res.send(newReleases);
     });
@@ -158,21 +160,21 @@ module.exports = (app) => {
         const device = req.body.device;
 
         const con = new SpotifyController(req.user);
-        const devices = await con.playTrack(track,device);
-        res.send(devices);
+        const response = await con.playTrack(track,device);
+        res.send(response);
     });
     app.post('/api/resume',  requireLogin,refreshSpotify,async (req,res) => {
         const con = new SpotifyController(req.user);
-        const devices = await con.resumeTrack();
-        res.send(devices);
+        const response = await con.resumeTrack();
+        res.send(response);
     });
 
     app.post('/api/pause', requireLogin,refreshSpotify, async (req,res) => {
         const device = req.body.device;
 
         const con = new SpotifyController(req.user);
-        const devices = await con.pauseTrack(device);
-        res.send(devices);
+        const response = await con.pauseTrack(device);
+        res.send(response);
     });
     app.post('/api/previous', requireLogin,refreshSpotify, async (req,res) => {
        const device = req.body.device;

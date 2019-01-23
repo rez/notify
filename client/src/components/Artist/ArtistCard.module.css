@@ -5,6 +5,7 @@
     display: inline-block;
     padding: .75rem!important;
     border-radius: 0!important;
+    float: inherit!important;
 }
 p{
     position: relative;
@@ -17,4 +18,7 @@ p{
 }
 .ArtistCard{
     padding: .75rem;
+}
+.ArtistImage {
+    max-height: 246px;
 }

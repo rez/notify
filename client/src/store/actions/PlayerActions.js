@@ -102,7 +102,7 @@ export const playTrack = (track, external = false, isPlaying = false,device) => 
     dispatch({type : PLAY});
 };
 
-export const onProgress = (progress,duration_ms) => async dispatch => {
-    dispatch({type : UPDATE_TIMER, duration : duration_ms, progress : progress});
+export const onProgress = (progress,duration_ms) => {
+    return {type : UPDATE_TIMER, duration : duration_ms, progress : progress};
 };
 

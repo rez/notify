@@ -19,10 +19,10 @@ const ArtistGrid = (props) => {
                 props.items.map( item => {
                     return (<Card
                             key={item.id}
-                            sets={item.releases.sets}
+                            sets={item.sets}
                             name={item.name}
                             img={item.images[0].url}
-                            releases={item.releases.releases}
+                            releases={item.releases}
                             showNewReleases={props.showNewReleases}
                             showSetMap={props.showSetMap}
                         >

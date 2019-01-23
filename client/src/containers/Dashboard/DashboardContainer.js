@@ -13,7 +13,7 @@ import {MOST_PLAYED_LINK} from "../../constants/constants";
 import {UNSEEN_LINK} from "../../constants/constants";
 import {DASH_BASE_PATH} from "../../constants/constants";
 
-class DashboardContainer extends Component {
+export class DashboardContainer extends Component {
     state = {
         page : 0,
         basePath : DASH_BASE_PATH,
@@ -67,7 +67,6 @@ class DashboardContainer extends Component {
         const activeFilter = this.state.dashNavFilter.find(({label}) => label ===  this.props.dashboard.activeGrid);
         const activePath = this.props.match.params.filter ? this.props.match.params.filter : FOLLOWING_LINK;
         const detectedFilter = this.state.dashNavFilter.find(({path}) => path ===  activePath);
-
         if(this.props.location.init && !detectedFilter.loaded){
            detectedFilter.action(this.props.location.latitude, this.props.location.longitude);
            this.updateActiveFilter(detectedFilter);
@@ -107,6 +106,20 @@ class DashboardContainer extends Component {
         })
     };
 
+    scrollHandler = () => {
+        if(this.props.dashboard.fetching)return;
+
+        switch (this.props.dashboard.activeGrid) {
+            case FOLLOWING:
+                this.props.getUserFollows();
+                break;
+            case MOST_PLAYED_ARTIST:
+                this.props.getUserMostPlayed();
+                break;
+            default: return;
+        }
+    };
+
     render(){
         return (
             <Dashboard
@@ -114,6 +127,7 @@ class DashboardContainer extends Component {
                 {...this.state}
                 navFilters={this.state.dashNavFilter}
                 setMapHandler={this.setMapHandler}
+                scrollHandler={this.scrollHandler}
                 modalCancelHandler={this.modalCancelHandler}
                 newReleasesHandler={this.newReleasesHandler}
             />

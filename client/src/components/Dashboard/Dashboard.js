@@ -6,6 +6,7 @@ import Loader from '../UI/Loader/Loader'
 import ArtistReleaseList from "..//Artist/ArtistReleaseList/ArtistReleaseList";
 import ArtistSetsMap from "../Artist/ArtistSetsMap/ArtistSetsMap";
 import ArtistGrid from '../Artist/ArtistGrid/ArtistGrid.js';
+import InfiniteScroll from '../InfiniteScroll/InfiniteScroll';
 import FilterNav from '../FilterNav/FilterNav';
 import loader from '../UI/Loader/images/loader.gif';
 import * as constants from '../../constants/constants';
@@ -22,6 +23,7 @@ const propTypes = {
     dashboard : PropTypes.shape({}).isRequired,
     newReleasesHandler : PropTypes.func.isRequired,
     setMapHandler : PropTypes.func.isRequired,
+    scrollHandler : PropTypes.func.isRequired,
     activeReleasesArtist :PropTypes.string.isRe4quired,
     basePath :PropTypes.string.isRequired,
     activeSetsArtist : PropTypes.string.isRequired,
@@ -31,6 +33,7 @@ const propTypes = {
 
 const Dashboard = ({
     modalCancelHandler,
+    scrollHandler,
     showReleasesModal,
     showSetsModal,
     playTrack,
@@ -59,24 +62,29 @@ const Dashboard = ({
                     null}
             </Modal>
             <FilterNav basePath={basePath} active={dashboard.activeGrid} navFilters={navFilters} />
+            <InfiniteScroll   onScroll={scrollHandler}>
             {dashboard.follows.length ?
-                <ArtistGrid
-                    show={dashboard.activeGrid === constants.FOLLOWING ? true : false}
-                    items={dashboard.follows}
-                    showNewReleases={newReleasesHandler}
-                    showSetMap={setMapHandler}
-                >
-                </ArtistGrid> : null
+                    <ArtistGrid
+                        show={dashboard.activeGrid === constants.FOLLOWING ? true : false}
+                        items={dashboard.follows}
+                        showNewReleases={newReleasesHandler}
+                        showSetMap={setMapHandler}
+                    >
+                    </ArtistGrid>
+                : null
+
             }
             {dashboard.mostPlayed.length ?
-                <ArtistGrid
-                    show={dashboard.activeGrid === constants.MOST_PLAYED_ARTIST ? true : false}
-                    items={dashboard.mostPlayed}
-                    showNewReleases={newReleasesHandler}
-                    showSetMap={setMapHandler}
-                >
-                </ArtistGrid> : null
+                    <ArtistGrid
+                        show={dashboard.activeGrid === constants.MOST_PLAYED_ARTIST ? true : false}
+                        items={dashboard.mostPlayed}
+                        showNewReleases={newReleasesHandler}
+                        showSetMap={setMapHandler}
+                    >
+                    </ArtistGrid>
+               : null
             }
+            </InfiniteScroll>
             {dashboard.fetching ? <Loader/> : null}
 
         </div>

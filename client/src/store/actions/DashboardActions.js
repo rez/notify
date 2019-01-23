@@ -1,18 +1,22 @@
 import axios from "axios";
 import * as constants from '../../constants/constants'
+import {getFollowsLastID, getMostPlayedOffset} from "../../selectors/DashSelectors";
 import {
     GET_USER_FOLLOWS,
     GET_USER_MOST_PLAYED,
     UPDATE_ACTIVE_FILTER,
     FETCH_REQUEST
 } from "./ActionTypes";
+import {FOLLOWING} from "../../constants/constants";
 
-export const getUserFollows = (latitude, longitude) => async dispatch => {
+export const getUserFollows = (latitude, longitude) => async (dispatch, getState) => {
     dispatch({type : FETCH_REQUEST});
+    const state = getState();
     const res = await axios.get('/api/releases', {
         params : {
             longitude: longitude,
-            latitude: latitude
+            latitude: latitude,
+            after : getFollowsLastID(state)
         }
     });
     if(res){
@@ -21,12 +25,14 @@ export const getUserFollows = (latitude, longitude) => async dispatch => {
 
 };
 
-export const getUserMostPlayed = (latitude, longitude) => async dispatch => {
+export const getUserMostPlayed = (latitude, longitude) => async  (dispatch, getState) => {
     dispatch({type : FETCH_REQUEST});
+    const state = getState();
     const res = await axios.get('/api/releases/mostplayed', {
         params : {
             longitude: longitude,
-            latitude: latitude
+            latitude: latitude,
+            offset : getMostPlayedOffset(state)
         }
     });
     if(res){
@@ -47,7 +53,7 @@ export const getUserUnseen = (latitude, longitude) => async dispatch => {
     }
 
 };
-export const updateActiveFilter = (filter) => async dispatch => {
-    dispatch({type : UPDATE_ACTIVE_FILTER, filter : filter});
+export const updateActiveFilter = (filter) => {
+    return({type : UPDATE_ACTIVE_FILTER, filter : filter});
 };
 

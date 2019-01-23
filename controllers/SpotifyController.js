@@ -11,12 +11,12 @@ class SpotifyController {
         this.seatGeekController = new SeatGeekController();
     }
 
-     async getSpotifyFollows(page  = 0, results = []){
-        const offset = 50 * page;
+     async getSpotifyFollows(after  = 0, results = []){
+        //const offset = 50 * page;
         try {
             const result = await axios({
                 method : 'get',
-                url : `https://api.spotify.com/v1/me/following?type=artist&offset=${offset}`,
+                url : `https://api.spotify.com/v1/me/following?type=artist&after=${after}`,
                 dataType : 'json',
                 headers : {
                     'Authorization' : 'Bearer ' + this.user.spotifyAccessToken,
@@ -25,12 +25,13 @@ class SpotifyController {
             });
 
             if(result.data){
-                const max = 10;
-                const newPage = page + 1;
+                results = result.data.artists.items;
+                // const max = 10;
+                // const newPage = page + 1;
 
-                results = [...results, ...result.data.artists.items];
-                if(max > (newPage * 50)) this.getSpotifyFollows(this.user,newPage,results);
-                else return results;
+                //results = [...results, ...result.data.artists.items];
+                // if(max > (newPage * 50)) this.getSpotifyFollows(this.user,newPage,results);
+                 return results;
             }else{
                console.log("ERROR");
             }
@@ -49,7 +50,7 @@ class SpotifyController {
 
 
     }
-   async getSpotifyReleases(id){
+   async getSpotifyReleases(after = 0, id){
         try {
             const result = await axios({
                 method : 'get',
@@ -74,9 +75,9 @@ class SpotifyController {
         }
     }
 
-    async getSpotifyMostPlayed(page = 0, results = []) {
+    async getSpotifyMostPlayed(offset = 0, results = []) {
         console.log("GET MOST PLAYED");
-        const offset = 50 * page;
+        //const offset = 50 * page;
         try {
             const result = await axios({
                 method : 'get',
@@ -92,12 +93,12 @@ class SpotifyController {
 
 
             if(result.data){
-                const max = 10;
-                const newPage = page + 1;
-
-                results = [...results, ...result.data.items];
-                if(max > (newPage * 50)) this.getSpotifyMostPlayed(this.user,newPage,results);
-                else return results;
+                // const max = 10;
+                // const newPage = page + 1;
+                //
+                 results =result.data.items;
+               // if(max > (newPage * 50)) this.getSpotifyMostPlayed(this.user,newPage,results);
+                return results;
             }else{
                 console.log("ERROR");
             }
@@ -106,14 +107,14 @@ class SpotifyController {
         }
     }
 
-     async findNewMusic(lat, lng, req, type = constants.SPOTIFY_FOLLOWS){
+     async findNewMusic(lat, lng, req,offset, type = constants.SPOTIFY_FOLLOWS){
 
-        const following = type === constants.SPOTIFY_FOLLOWS ? await this.getSpotifyFollows() : await this.getSpotifyMostPlayed();
+        const following = type === constants.SPOTIFY_FOLLOWS ? await this.getSpotifyFollows(offset) : await this.getSpotifyMostPlayed(offset);
 
         const newReleases = await axios.all(following.map( async follow => {
-            const releases = {'releases' : await this.getSpotifyReleases(follow.id) ,
+            const releases = {'releases' : await this.getSpotifyReleases(offset, follow.id) ,
                               'sets' : await this.seatGeekController.getArtistPerformance(follow.name,lat, lng, req)};
-            return {...follow, releases};
+            return {...follow, ...releases};
         }))
 
          newReleases.filter(artist => {return artist.releases.size});
