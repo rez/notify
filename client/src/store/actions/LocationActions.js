@@ -1,8 +1,6 @@
 import {GET_LOCATION} from './ActionTypes';
 
 export const getLocation = () => async dispatch => {
-
-    console.log("GETTING LOCATION");
     if ("geolocation" in navigator) {
         // check if geolocation is supported/enabled on current browser
         navigator.geolocation.getCurrentPosition(

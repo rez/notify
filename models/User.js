@@ -7,7 +7,8 @@ const userSchema = new Schema({
     spotifyRefreshToken : String,
     spotifyName : String,
     tokenExpires : String,
-    storeTime : String
+    storeTime : String,
+    lastView : String
 });
 
 mongoose.model('users',userSchema);

@@ -16,4 +16,5 @@ export const GET_USER_MOST_PLAYED = 'get_user_most_played';
 export const FETCH_USER_IN_PROGRESS = 'fetch_user_in_progress';
 export const UPDATE_ACTIVE_FILTER = 'update_active_filter';
 export const FETCH_REQUEST = 'fetch_request';
+export const SET_TIME_SPAN = 'time_span';
 

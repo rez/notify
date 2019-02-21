@@ -3,13 +3,31 @@ const mongoose = require('mongoose');
 const User =  mongoose.model("users");
 const utils = require("../utils/Utils");
 
-module.exports = async (req, res, next) => {
-    console.log("TEST TOKEN")
-    console.log(req.ip);
+const updateLastRequestDate = async (id, time) => {
+    try{
+        const existingUser = await User.findOneAndUpdate({spotifyID : id},
+            {$set:{lastView:time}},
+            (err,usr) => {
+                if(err){
+                    console.log(err);
+                }
+            });
 
+        if(existingUser){
+            next();
+            return;
+        }
+    }catch (e) {
+        console.log(e);
+    }
+};
+
+module.exports = async (req, res, next) => {
     const d = new Date();
     const ms = Math.round(d.getTime());
 
+    if(!req.user) next();
+    console.log(req.user);
     const isTokenExpired = req.user.tokenExpires - ms;
     console.log(isTokenExpired);
     if(isTokenExpired <= 0){
@@ -36,6 +54,10 @@ module.exports = async (req, res, next) => {
             console.log(e);
         }
 
+    }else{
+        //make a day before since releases are by general day not specific MS and will miss same day
+        d.setDate(d.getDate() -1);
+        updateLastRequestDate(req.user.spotifyID, d.getFullYear() + "-" + (d.getMonth()+1) + "-" + d.getDate());
     }
 
     next();

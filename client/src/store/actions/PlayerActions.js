@@ -8,8 +8,7 @@ import {
     PLAY,
     UPDATE_TIMER,
     PLAYING,
-    UPDATE_TRACK_INFO,
-    GET_USER_FOLLOWS
+    UPDATE_TRACK_INFO
 } from "./ActionTypes";
 import {getActiveDevice} from "../../selectors/PlayerSelectors";
 
@@ -38,7 +37,7 @@ export const requestPlayerState = (accessToken) => async (dispatch, getState) =>
         }
 
         const state = getState();
-        const activeDevice = getActiveDevice(state);
+        //const activeDevice = getActiveDevice(state);
         const trackState = track.is_playing ? PLAYING : PAUSE;
 
         dispatch({ type : UPDATE_TRACK_INFO ,
@@ -52,10 +51,7 @@ export const requestPlayerState = (accessToken) => async (dispatch, getState) =>
             }
         });
     }catch(e){
-        console.log(e.response.status);
-        if(e.response.status === 401){
-            //re auth
-        }
+        console.log("error",e);
         return;
 
     }

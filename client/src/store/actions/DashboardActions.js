@@ -5,7 +5,7 @@ import {
     GET_USER_FOLLOWS,
     GET_USER_MOST_PLAYED,
     UPDATE_ACTIVE_FILTER,
-    FETCH_REQUEST
+    FETCH_REQUEST, SET_TIME_SPAN
 } from "./ActionTypes";
 import {FOLLOWING} from "../../constants/constants";
 
@@ -55,5 +55,8 @@ export const getUserUnseen = (latitude, longitude) => async dispatch => {
 };
 export const updateActiveFilter = (filter) => {
     return({type : UPDATE_ACTIVE_FILTER, filter : filter});
+};
+export const setTimeSpan = (span) => {
+    return({type : SET_TIME_SPAN, timeSpan : span});
 };
 

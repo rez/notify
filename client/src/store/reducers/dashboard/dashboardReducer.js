@@ -1,5 +1,5 @@
 import {
-    GET_USER_FOLLOWS, GET_USER_MOST_PLAYED, UPDATE_ACTIVE_FILTER, FETCH_REQUEST
+    GET_USER_FOLLOWS, GET_USER_MOST_PLAYED, UPDATE_ACTIVE_FILTER, FETCH_REQUEST, SET_TIME_SPAN
 } from "../../actions/ActionTypes";
 import {defaultState} from "./initialState";
 import * as constants from "../../../constants/constants";
@@ -16,6 +16,8 @@ export default function(state = defaultState, action){
             return{...state, activeGrid : action.filter};
         case FETCH_REQUEST:
             return{...state, fetching : true};
+        case SET_TIME_SPAN:
+            return{...state, timeSpan : action.timeSpan};
         default:
             return state;
 

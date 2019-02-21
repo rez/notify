@@ -1,31 +1,46 @@
 import React from 'react';
 import styles from './ArtistCard.module.css';
+import PropTypes from "prop-types";
 
-const card = (props) => {
+const propTypes = {
+    name: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
+    releases: PropTypes.array.isRequired,
+    sets: PropTypes.array.isRequired,
+    showNewReleases: PropTypes.func.isRequired,
+    showSetMap: PropTypes.func.isRequired,
+};
 
+export const Card = ({
+    name,
+    img,
+    releases,
+    sets,
+    showNewReleases,
+    showSetMap
+              }) => {
 
     return (
-        <div className={`card col  grey lighten-5 z-depth-1 s3 text-lighten-6 ${styles.a__s3}`}>
+        <div className={`card col  grey lighten-5 z-depth-1 s12 m4 l3 text-lighten-6 ${styles.a__s3}`}>
             <div className="card-image">
-                <img className={styles.ArtistImage} src={props.img}/>
-                <span className="card-title">{props.name}</span>
+                <img className={styles.ArtistImage} src={img}/>
+                <span className="card-title">{name}</span>
             </div>
             <div className="card-content">
-                <p className=""> {props.releases ?
+                <p className=""> {releases ?
                     <span
-                        className={`new black badge ${styles.badge}`}
-                        onClick={() => props.showNewReleases(props.name, props.releases)}
+                        className={`release-btn new black badge ${styles.badge}`}
+                        onClick={() => showNewReleases(name, releases)}
                     >
-                        {props.releases.length} releases</span> :
-
+                        {releases.length} release(s)</span> :
                     <span className={`new black badge ${styles.badge}`}>There are no new releases</span>
                 }
-                    {props.sets.length ?
+                    {sets.length ?
                         <span
-                            className={`new black badge ${styles.badge}`}
-                            onClick={() => props.showSetMap(props.name, props.sets)}
+                            className={`sets-btn new black badge ${styles.badge}`}
+                            onClick={() => showSetMap(name, sets)}
 
-                        > {props.sets.length} show(s) near you</span>
+                        >{sets.length} show(s) near you</span>
                         :
                         <span className={`new black badge ${styles.badge}`}> No shows near you</span>}
                 </p>
@@ -38,5 +53,5 @@ const card = (props) => {
         </div>
     );
 };
-
-export default card;
+Card.propTypes = propTypes;
+export default Card;

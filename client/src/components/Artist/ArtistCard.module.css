@@ -1,7 +1,5 @@
 
 .a__s3{
-    width: 23%!important;
-    margin-right: 1%;
     display: inline-block;
     padding: .75rem!important;
     border-radius: 0!important;
@@ -16,9 +14,27 @@ p{
     width: 100%;
     cursor: pointer;
 }
+.badge:after{
+    content: ''!important;
+}
 .ArtistCard{
     padding: .75rem;
 }
 .ArtistImage {
     max-height: 246px;
 }
+:global(.l3){
+    width: 24%!important;
+}
+:global(.l3):not(:nth-child(4n)){
+    margin-right: 1.33%;
+}
+/*:global(.m4):not(:nth-child(3n)){*/
+    /*margin-right: 1.5%;*/
+/*}*/
+/*:global(.m4){*/
+     /*width: 32.3%!important;*/
+ /*}*/
+/*:global(.s12){*/
+    /*width: 100%!important;*/
+/*}*/

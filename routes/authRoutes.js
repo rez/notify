@@ -21,6 +21,10 @@ module.exports = (app) => {
     });
     app.get('/api/current_user',refreshSpotify,(req,res) =>{
         console.log("SDFSDFSDF");
+        if(!req.user){
+            res.send("NOT_LOGGED_IN");
+            return;
+        }
         res.send(req.user);
     });
 };

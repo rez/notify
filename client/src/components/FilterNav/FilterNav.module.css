@@ -1,5 +1,5 @@
 .filter__nav{
-
+    display: inline-block;
 }
 .filter__nav__container{
     margin-bottom: 10px;

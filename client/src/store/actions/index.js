@@ -17,5 +17,6 @@ export {
 export {
         getUserFollows,
         getUserMostPlayed,
-        updateActiveFilter
+        updateActiveFilter,
+        setTimeSpan
 }       from './DashboardActions'
